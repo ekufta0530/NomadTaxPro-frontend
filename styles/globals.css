@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/*  Text: SemiBold 3.75rem  */
+/*  Text: Bold 0.875rem  */
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  background-color: white;
 }
 
 @media (prefers-color-scheme: dark) {
