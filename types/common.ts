@@ -1,1 +1,21 @@
-export type Icons = "Users" | "SearchListPurple";
+export type Icons =
+  | "Users"
+  | "Apps"
+  | "ChevronDownWhite"
+  | "ChevronDownBlue"
+  | "ChevronLeftWhite"
+  | "ChevronRightWhite"
+  | "ChevronUpWhite"
+  | "Communication"
+  | "CostEffective"
+  | "Dashboard"
+  | "HeartOutline"
+  | "HeartFilled"
+  | "Info"
+  | "KeyboardRightBlue"
+  | "Landsque"
+  | "Notificaton"
+  | "Stars"
+  | "Search"
+  | "Sun"
+  | "Technology";

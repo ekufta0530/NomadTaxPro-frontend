@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main>
       <div>Task-1</div>
-      <Icon icon="Users" size="xl" />
+      <Icon icon="Technology" size="xl" />
     </main>
   );
 }
