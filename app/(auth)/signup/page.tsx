@@ -14,16 +14,16 @@ export default function SignUpPage() {
       >
         <Flex variant="rowStartCenter" className="gap-10">
           <Button
-            variant="standard"
-            text="Sign In"
-            size="sm"
-            className="text-purple-blue"
-          />
-          <Button
             variant="solid-dark-blue"
             text="Sign Up"
             size="md"
             className="text-white w-32"
+          />
+          <Button
+            variant="standard"
+            text="Sign In"
+            size="sm"
+            className="text-purple-blue"
           />
         </Flex>
         <Text
