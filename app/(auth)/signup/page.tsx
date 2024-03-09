@@ -15,13 +15,13 @@ export default function SignUpPage() {
         <Flex variant="rowStartCenter" className="gap-10">
           <Button
             variant="standard"
-            text="Sign Up"
+            text="Sign In"
             size="sm"
             className="text-purple-blue"
           />
           <Button
             variant="solid-dark-blue"
-            text="Sign In"
+            text="Sign Up"
             size="md"
             className="text-white w-32"
           />
