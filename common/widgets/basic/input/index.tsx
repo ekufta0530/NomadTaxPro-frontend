@@ -4,7 +4,6 @@ import React, { InputHTMLAttributes } from "react";
 import { cn } from "utils/helpers/cn";
 import { Icon } from "common/media/icon";
 import { Icons } from "types/common";
-import { icons } from "data/static/iconData";
 
 interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "size">,

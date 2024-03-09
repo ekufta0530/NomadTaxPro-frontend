@@ -8,7 +8,13 @@ export default function Home() {
     <main>
       <div>Task-1</div>
       <Icon icon="Technology" size="xl" />
-      <Text as="p" text="Here we go" variant="xs-regular-purple-blue" />
+      <Text
+        as="p"
+        text="Here we go"
+        size="3xl"
+        color="dark-blue"
+        weight="bold"
+      />
       {/* Dark Blue Button */}
       <Button className="ml-10" text="Learn More" variant="rounded-dark-blue" />
       {/* Solid Dak Blue */}
