@@ -39,7 +39,7 @@ export function Input({
           {label}
         </label>
       )}
-      <Flex variant="rowStartCenter" className={`${container} gap-0`}>
+      <Flex variant="rowStartCenter" className={`${container} gap-0 w-full`}>
         {icon && <Icon icon={icon} size="xs" />}
         <input
           {...props}

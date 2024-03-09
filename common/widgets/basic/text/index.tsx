@@ -61,7 +61,7 @@ const textVariants = cva("", {
       lg: "text-lg", // 18px
       xl: "text-xl", // 20px
       "2xl": "text-[1.625rem]", // 26px
-      "3xl": "text-[1.875]", // 30px
+      "3xl": "text-[1.875rem]", // 30px
       "4xl": "text-[3.75rem]", // 60px
     },
     weight: {
