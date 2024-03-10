@@ -32,6 +32,7 @@ export function Button({
   id,
   leftIcon,
   rightIcon,
+  disabled,
   ...props
 }: ButtonProps) {
   const flex =
@@ -40,6 +41,7 @@ export function Button({
   const buttonComponent = (
     <button
       {...props}
+      disabled={disabled}
       className={cn(
         buttonVariants({ variant, size, color, weight, className }),
         flex
@@ -61,7 +63,7 @@ const buttonVariants = cva("", {
   variants: {
     variant: {
       "solid-dark-blue":
-        "bg-dark-blue px-6 py-3 rounded-md text-sm font-medium font-dmSans text-white border-none hover:opacity-80",
+        "bg-dark-blue px-6 py-3 rounded-md text-sm font-medium font-dmSans text-white border-none hover:opacity-80 disabled:opacity-70 disabled:cursor-not-allowed cursor-pointer",
       outline:
         "text-medium-purple font-dmSans border-2 border-medium-purple hover:opacity-80 ease-out delay-75",
       standard:
