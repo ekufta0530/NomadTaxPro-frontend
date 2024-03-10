@@ -5,6 +5,7 @@ import Image from "next/image";
 import { imgs } from "data/static/imgData";
 import { Img } from "common/media/img";
 import { Icon } from "common/media/icon";
+import { CountryCard } from "components/cards/countryCard";
 const { logo, profilePicture } = imgs;
 
 export default function Page() {
@@ -29,6 +30,7 @@ export default function Page() {
         </Flex>
       </Flex>
       {/* Add Country Card Here */}
+      <CountryCard />
     </>
   );
 }
