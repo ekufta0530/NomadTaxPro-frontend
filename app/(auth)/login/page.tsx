@@ -1,5 +1,4 @@
 import React from "react";
-import { Icon } from "common/media/icon";
 import { Button } from "common/widgets/basic/button";
 import { Input } from "common/widgets/basic/input";
 import { Text } from "common/widgets/basic/text";
@@ -9,42 +8,33 @@ export default function SignUpPage() {
   return (
     <Flex variant="columnCenterCenter">
       <Flex
-        variant="columnCenterCenter"
+        variant="columnCenterStart"
         className="p-5 sm:p-10 shadow-2xl w-[calc(100%-1rem)] mt-10  mx-2 sm:w-[30rem]  rounded-xl"
       >
-        <Flex variant="rowStartCenter" className="gap-10">
+        <Flex variant="rowCenterCenter" className="gap-10 w-full">
           <Button
             variant="solid-dark-blue"
-            text="Sign Up"
+            text="Sign In"
             size="md"
             className="text-white w-32"
+            link="/login"
+            color="dark-blue"
           />
           <Button
             variant="standard"
-            text="Sign In"
+            text="Sign Up"
             size="sm"
+            link="/signup"
             className="text-purple-blue"
           />
         </Flex>
         <Text
           as="h1"
-          className="text-center"
-          text="Create your account!"
+          className="text-center w-full"
+          text="Welcome back!"
           color="dark-blue"
-          size="2xl"
+          size="3xl"
           weight="semiBold"
-        />
-        <Input
-          variant="solid-light-grey"
-          label="First Name"
-          className="w-full sm:w-96"
-          containerClass="w-full sm:w-96"
-        />
-        <Input
-          variant="solid-light-grey"
-          label="Last Name"
-          className="w-full sm:w-96"
-          containerClass="w-full sm:w-96"
         />
         <Input
           variant="solid-light-grey"
@@ -58,18 +48,31 @@ export default function SignUpPage() {
           className="w-full sm:w-96"
           containerClass="w-full sm:w-96"
         />
-        <Input
-          variant="solid-light-grey"
-          label=" Confirm Password"
-          className="w-full sm:w-96"
-          containerClass="w-full sm:w-96"
+        <Button
+          className="self-start w-full"
+          text="Forgot Password?"
+          color="dark-blue"
+          size="sm"
+          weight="semiBold"
+          variant="standard"
+          link="/forgot-password"
         />
         <Button
           variant="solid-dark-blue"
           text="Sign Up"
           size="md"
-          className="text-white w-full sm:w-96 mt-2"
+          className="text-white w-full sm:w-96 mt-5"
         />
+        <Flex className="px-4  bg-light-grey w-full gap-0 mt-5">
+          <Text as="p" text="Don't have an account?" size="sm" />
+          <Button
+            variant="standard"
+            text="Sign Up"
+            size="md"
+            color="dark-blue"
+            link="/signup"
+          />
+        </Flex>
       </Flex>
     </Flex>
   );

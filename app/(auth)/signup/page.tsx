@@ -1,5 +1,4 @@
 import React from "react";
-import { Icon } from "common/media/icon";
 import { Button } from "common/widgets/basic/button";
 import { Input } from "common/widgets/basic/input";
 import { Text } from "common/widgets/basic/text";
@@ -18,12 +17,14 @@ export default function SignUpPage() {
             text="Sign Up"
             size="md"
             className="text-white w-32"
+            link="/signup"
           />
           <Button
             variant="standard"
             text="Sign In"
             size="sm"
             className="text-purple-blue"
+            link="/login"
           />
         </Flex>
         <Text
