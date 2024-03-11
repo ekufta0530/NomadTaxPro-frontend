@@ -10,6 +10,7 @@ import { Img } from "common/media/img";
 import { imgs } from "data/static/imgData";
 import { Map } from "components/map";
 import { Group } from "common/widgets/advance/group";
+import Image from "next/image";
 
 export function CountryDetail() {
   return (
