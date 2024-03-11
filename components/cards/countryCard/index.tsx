@@ -4,6 +4,9 @@ import Image from "next/image";
 import { Icon } from "common/media/icon";
 import { Text } from "common/widgets/basic/text";
 import { Button } from "common/widgets/basic/button";
+import { Select } from "common/widgets/basic/select";
+import { anchorSelectData } from "data/static/selectData";
+import { auxiliarySelectData } from "data/static/selectData";
 import { CountryCardProps } from "types/cards";
 
 export function CountryCard({
@@ -57,6 +60,18 @@ export function CountryCard({
         variant="circle"
         className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2 absolute top-9 right-8"
       />
+      <Icon
+        icon="HeartOutline"
+        size="sm"
+        variant="circle"
+        className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2 absolute top-10 right-8"
+      />
+      {/* <Icon
+        icon="HeartFilled"
+        size="sm"
+        variant="circle"
+        className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2"
+      /> */}
     </div>
   );
 }

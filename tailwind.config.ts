@@ -26,7 +26,7 @@ const config: Config = {
         "santa-grey": "#8F9BBA",
       },
       boxShadow: {
-        grey: "0 40px 17px 4px rgba(112, 144, 176, 8%)",
+        grey: "14px 40px 17px 4px rgba(112, 144, 176, 8%)",
         "grey-sm": "14px 20px 17px 4px rgba(112, 144, 176, 8%)",
         "grey-xs": "14px 15px 15px 4px rgba(112, 144, 176, 8%)",
       },
