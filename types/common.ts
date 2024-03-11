@@ -19,3 +19,16 @@ export type Icons =
   | "Search"
   | "Sun"
   | "Technology";
+
+export type SelectMenu = {
+  id: number;
+  value: string;
+  option: string;
+};
+
+export type SelectProps = {
+  data: SelectMenu[];
+  label: string;
+  hideOption: boolean;
+  onSelectChange: (e: any) => void;
+};

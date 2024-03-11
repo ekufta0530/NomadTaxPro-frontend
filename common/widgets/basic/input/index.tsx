@@ -28,7 +28,9 @@ export function Input({
     if (variant === "solid-light-grey") {
       container = "bg-light-grey text-sm px-6";
     } else if (variant === "rounded-light-grey") {
-      container = "bg-light-grey text-sm px-6  rounded-full";
+      container = "bg-light-grey text-sm px-6 rounded-full";
+    } else if (variant === "outline") {
+      container = "bg-white border border-french-grey text-sm px-3 rounded-xl";
     }
   }
 
@@ -57,6 +59,8 @@ const inputVariants = cva("", {
         "font-dmSans bg-light-grey text-sm px-6 py-[.7rem] rounded-xs border-none text-dark-grey hover:opacity-80 focus:border-none focus:outline-none",
       "rounded-light-grey":
         "font-dmSans bg-light-grey text-sm px-6 py-[.7rem] rounded-full  border-none text-dark-grey hover:opacity-80 focus:border-none focus:outline-none",
+      outline:
+        "font-dmSans bg-white border-2 border-black p-3 w-full focus:outline-none focus:border-none",
       standard: "font-dmSans bg-white border-2 border-black",
       danger: "font-dmSans bg-white border-2 border-black",
       underline: "font-dmSans bg-white border-2 border-black",

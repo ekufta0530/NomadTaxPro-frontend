@@ -41,7 +41,8 @@ const iconVariants = cva("cursor-pointer", {
   variants: {
     variant: {
       solid: "bg-black border-2 py-10",
-      outline: "bg-black border-2 border-black",
+      outline:
+        "bg-light-grey border border-french-grey p-2 rounded-xl w-full h-full",
       circle: "rounded-full	border-2 border-medium-purple",
       standard: "bg-transparent border-none",
     },

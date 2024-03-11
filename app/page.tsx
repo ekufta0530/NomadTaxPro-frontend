@@ -1,7 +1,9 @@
 import { Icon } from "common/media/icon";
 import { Button } from "common/widgets/basic/button";
 import { Input } from "common/widgets/basic/input";
+import { Select } from "common/widgets/basic/select";
 import { Text } from "common/widgets/basic/text";
+import { anchorSelectData } from "data/static/selectData";
 
 export default function Home() {
   return (
@@ -47,6 +49,13 @@ export default function Home() {
         voluptatum corrupti itaque quia vel fuga ipsam earum hic, expedita,
         dicta eum vero.
       </div>
+      <Input
+        variant="outline"
+        icon="Search"
+        className="border-none rounded-s-xl"
+      />
+      <Select data={anchorSelectData} containerClass="mt-10 w-96" />
+      <Icon icon="Dashboard" variant="outline" className="h-20 w-20 p-5" />
     </main>
   );
 }
