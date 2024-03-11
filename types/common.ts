@@ -32,3 +32,19 @@ export type SelectProps = {
   hideOption: boolean;
   onSelectChange: (e: any) => void;
 };
+
+export type FlexProps =
+  | "rowStartCenter"
+  | "rowStartCenter"
+  | "rowCenterStart"
+  | "rowCenterCenter"
+  | "rowBetweenStart"
+  | "rowBetweenCenter"
+  | "rowEndCenter"
+  | "rowEndStart"
+  | "columnStartCenter"
+  | "columnCenterCenter"
+  | "columnCenterStart"
+  | "columnStartStart"
+  | "columnBetweenCenter"
+  | "columnBetweenStart";

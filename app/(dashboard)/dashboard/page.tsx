@@ -1,36 +1,11 @@
 import React from "react";
-import { Input } from "common/widgets/basic/input";
-import { Flex } from "common/widgets/advance/flex";
-import Image from "next/image";
-import { imgs } from "data/static/imgData";
-import { Img } from "common/media/img";
-import { Icon } from "common/media/icon";
-import { CountryCard } from "components/cards/countryCard";
-const { logo, profilePicture } = imgs;
+import { Layout } from "layout";
+import { Home } from "sections/dashboard/home";
 
 export default function Page() {
   return (
-    <>
-      <Flex variant="rowBetweenCenter">
-        <Image src={logo} alt="logo" />
-        <Flex
-          variant="rowStartCenter"
-          className="shadow-grey-xs px-5 py-2 rounded-full"
-        >
-          <Input
-            variant="rounded-light-grey"
-            icon="Search"
-            size="xs"
-            className="h-10"
-          />
-          <Icon icon="Notification" size="xs" />
-          <Icon icon="Info" size="xs" />
-
-          <Img img={profilePicture} variant="circle" size="md" />
-        </Flex>
-      </Flex>
-      {/* Add Country Card Here */}
-      <CountryCard />
-    </>
+    <Layout type="Dashboard">
+      <Home />
+    </Layout>
   );
 }
