@@ -31,7 +31,7 @@ export default function Page() {
         password,
       });
       if (res.status === 201) {
-        toast.success(data.message);
+        toast.info(data.message);
         setIsLoading(false);
       } else {
         toast.error(data.message);

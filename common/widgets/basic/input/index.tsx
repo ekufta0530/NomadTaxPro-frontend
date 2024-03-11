@@ -54,7 +54,7 @@ const inputVariants = cva("", {
   variants: {
     variant: {
       "solid-light-grey":
-        "font-dmSans bg-light-grey text-sm px-6 py-[.7rem] rounded-xs border-none text-dark-grey hover:opacity-80 focus:border-none focus:outline-none",
+        "font-dmSans bg-light-grey text-sm px-4 py-[.7rem] rounded-xs border-none text-dark-grey hover:opacity-80 focus:border-none focus:outline-none",
       "rounded-light-grey":
         "font-dmSans bg-light-grey text-sm px-6 py-[.7rem] rounded-full  border-none text-dark-grey hover:opacity-80 focus:border-none focus:outline-none",
       standard: "font-dmSans bg-white border-2 border-black",
