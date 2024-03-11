@@ -69,7 +69,7 @@ export function CountryCard() {
         <Input
           variant="outline"
           icon="Search"
-          containerClass=" rounded-s-xl mt-20 w-[53.75rem]  h-[3.75rem]"
+          containerClass="rounded-s-xl mt-20 w-[53.75rem]  h-[3.75rem]"
         />
         <Select
           data={anchorSelectData}

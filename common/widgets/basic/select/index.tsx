@@ -1,35 +1,6 @@
-// import React from "react";
-// import classes from "./Select.module.scss";
-// import { SelectMenu, SelectProps } from "types/common";
-
-// export function Select({
-//   data,
-//   label,
-//   hideOption,
-//   onSelectChange,
-// }: SelectProps) {
-//   return (
-//     <div className={classes.selectContainer}>
-//       <label htmlFor={label}>{label}</label>
-//       <div className={classes.selectWrapper}>
-//         <select
-//           className={classes.selectCss}
-//           onChange={(e: any) => onSelectChange(e)}
-//         >
-//           {data?.map(({ id, value, option }: SelectMenu) => (
-//             <option key={id} value={value} hidden={id === 1 && hideOption}>
-//               {option}
-//             </option>
-//           ))}
-//         </select>
-//       </div>
-//     </div>
-//   );
-// }
-
 import { VariantProps, cva } from "class-variance-authority";
 import { Flex } from "common/widgets/advance/flex";
-import React, { ChangeEvent, SelectHTMLAttributes } from "react";
+import React, { SelectHTMLAttributes } from "react";
 import { cn } from "utils/helpers/cn";
 import { Icons } from "types/common";
 import { SelectMenu } from "types/common";
@@ -69,7 +40,10 @@ export function Select({
       )}
       <select
         {...props}
-        className={cn(inputVariants({ variant, size, className }))}
+        className={cn(
+          inputVariants({ variant, size, className }),
+          "w-full h-full"
+        )}
       >
         {data?.map(({ id, value, option }: SelectMenu) => (
           <option key={id} value={value} hidden={id === 1 && hideOption}>

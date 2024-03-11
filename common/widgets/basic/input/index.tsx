@@ -41,7 +41,10 @@ export function Input({
           {label}
         </label>
       )}
-      <Flex variant="rowStartCenter" className={`${container} gap-0 w-full`}>
+      <Flex
+        variant="rowStartCenter"
+        className={`${container} gap-0 w-full h-full`}
+      >
         {icon && <Icon icon={icon} size="xs" />}
         <input
           {...props}
@@ -60,7 +63,7 @@ const inputVariants = cva("", {
       "rounded-light-grey":
         "font-dmSans bg-light-grey text-sm px-6 py-[.7rem] rounded-full  border-none text-dark-grey hover:opacity-80 focus:border-none focus:outline-none",
       outline:
-        "font-dmSans bg-white border-2 border-black p-3 w-full focus:outline-none focus:border-none",
+        "font-dmSans bg-white   p-3 w-full focus:outline-none focus:border-none",
       standard: "font-dmSans bg-white border-2 border-black",
       danger: "font-dmSans bg-white border-2 border-black",
       underline: "font-dmSans bg-white border-2 border-black",
