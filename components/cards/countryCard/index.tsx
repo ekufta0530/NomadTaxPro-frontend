@@ -7,6 +7,9 @@ import { Img } from "common/media/img";
 import { Icon } from "common/media/icon";
 import { Text } from "common/widgets/basic/text";
 import { Button } from "common/widgets/basic/button";
+import { Select } from "common/widgets/basic/select";
+import { anchorSelectData } from "data/static/selectData";
+import { auxiliarySelectData } from "data/static/selectData";
 const { profilePicture } = imgs;
 export function CountryCard() {
   return (
@@ -49,7 +52,45 @@ export function CountryCard() {
             className="w-[6.625rem] h-[2.125rem] rounded-full text-sm"
           />
         </Flex>
+        <Icon
+          icon="HeartOutline"
+          size="sm"
+          variant="circle"
+          className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2"
+        />
+        <Icon
+          icon="HeartFilled"
+          size="sm"
+          variant="circle"
+          className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2"
+        />
       </div>
+      <Flex variant="rowStartCenter" className=" py-5">
+        <Input
+          variant="outline"
+          icon="Search"
+          containerClass=" rounded-s-xl mt-20 w-[53.75rem]  h-[3.75rem]"
+        />
+        <Select
+          data={anchorSelectData}
+          containerClass="mt-20 w-[15.313rem] h-[3.75rem]"
+        />
+        <Select
+          data={auxiliarySelectData}
+          containerClass="mt-20 w-[15.313rem] h-[3.75rem]"
+        />
+
+        <Icon
+          icon="Dashboard"
+          variant="outline"
+          className="h-[3.75rem] w-[3.75rem] p-5 mt-20 "
+        />
+        <Icon
+          icon="Apps"
+          variant="outline"
+          className="h-[3.75rem] w-[3.75rem] p-5 mt-20 bg-white"
+        />
+      </Flex>
     </>
   );
 }
