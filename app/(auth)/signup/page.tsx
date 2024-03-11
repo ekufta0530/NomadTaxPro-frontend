@@ -11,7 +11,7 @@ import { Loader } from "common/loaders/loader";
 import { http } from "utils/http";
 import { API } from "utils/api";
 
-export default function SignUpPage() {
+export default function Page() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");

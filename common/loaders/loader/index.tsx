@@ -18,7 +18,13 @@ const loaders: LoaderTypes = {
   BarLoader,
 };
 
-export function Loader({ loading, type }: { loading: boolean; type: string }) {
+export function Loader({
+  loading,
+  type,
+}: {
+  loading: boolean;
+  type: "BarLoader";
+}) {
   const LoaderComponent = loaders[type];
 
   return (

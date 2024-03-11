@@ -4,7 +4,7 @@ import { Input } from "common/widgets/basic/input";
 import { Text } from "common/widgets/basic/text";
 import { Flex } from "common/widgets/advance/flex";
 
-export default function SignUpPage() {
+export default function Page() {
   return (
     <Flex variant="columnCenterCenter">
       <Flex
