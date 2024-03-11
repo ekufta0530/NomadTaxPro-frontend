@@ -49,6 +49,18 @@ export function CountryCard() {
             className="w-[6.625rem] h-[2.125rem] rounded-full text-sm"
           />
         </Flex>
+        <Icon
+          icon="HeartOutline"
+          size="sm"
+          variant="circle"
+          className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2"
+        />
+        <Icon
+          icon="HeartFilled"
+          size="sm"
+          variant="circle"
+          className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2"
+        />
       </div>
     </>
   );
