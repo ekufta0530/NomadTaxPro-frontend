@@ -5,6 +5,8 @@ import Image from "next/image";
 import { imgs } from "data/static/imgData";
 import { Img } from "common/media/img";
 import { Icon } from "common/media/icon";
+import { Menu } from "common/widgets/advance/menu";
+import { dashboardNavMenuData } from "data/static/selectData";
 const { logo, profilePicture } = imgs;
 
 export function DashboardNavbar() {
@@ -26,7 +28,13 @@ export function DashboardNavbar() {
         />
         <Icon icon="Notification" size="xs" />
         <Icon icon="Info" size="xs" />
-        <Img img={profilePicture} variant="circle" size="md" />
+        <Img
+          img={profilePicture}
+          variant="circle"
+          size="md"
+          className="min-w-4 min-h-4"
+        />
+        <Menu title="Romi" data={dashboardNavMenuData} />
       </Flex>
     </Flex>
   );

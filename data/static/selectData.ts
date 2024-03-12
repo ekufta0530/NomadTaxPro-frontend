@@ -52,3 +52,10 @@ export const auxiliarySelectData = [
     option: "Option 1",
   },
 ];
+
+// Menu Data
+
+export const dashboardNavMenuData = [
+  { id: 1, menu: "Favorites", link: "/favorites" },
+  { id: 2, menu: "Logout" },
+];

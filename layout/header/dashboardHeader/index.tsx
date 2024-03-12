@@ -14,7 +14,7 @@ export function DashboardHeader() {
         as="h1"
         weight="semiBold"
         color="white"
-        className="leading-tight ml-10"
+        className="leading-tight ml-10 text-4xl md:text-6xl"
       >
         The HR platform for global <br className="hidden md:block" />{" "}
         businesses!

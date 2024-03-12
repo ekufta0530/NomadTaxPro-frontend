@@ -48,3 +48,10 @@ export type FlexProps =
   | "columnStartStart"
   | "columnBetweenCenter"
   | "columnBetweenStart";
+
+// Menu Props
+export type MenuTypes = {
+  id: number;
+  link?: string;
+  menu: string;
+};

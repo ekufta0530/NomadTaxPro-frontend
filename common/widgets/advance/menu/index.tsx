@@ -6,18 +6,18 @@ import { VariantProps, cva } from "class-variance-authority";
 import { cn } from "utils/helpers/cn";
 import { Text } from "common/widgets/basic/text";
 import Link from "next/link";
-import { Menu } from "types/common";
+import { MenuTypes } from "types/common";
 
-interface MenuProps extends VariantProps<typeof menuVariansts> {
+interface MenuProps extends VariantProps<typeof menuVariants> {
   className?: string;
   children?: ReactNode;
   variant?: "standard";
   size?: "xs";
   title: string;
-  menuData: Array<Menu>;
+  data: Array<MenuTypes>;
 }
 
-export function Menu({ className, variant, size, title, menuData }: MenuProps) {
+export function Menu({ className, variant, size, title, data }: MenuProps) {
   const [open, setOpen] = useState<boolean>(false);
 
   const onClickMenu = () => {
@@ -25,17 +25,13 @@ export function Menu({ className, variant, size, title, menuData }: MenuProps) {
   };
 
   return (
-    <div className={cn(menuVariansts({ variant, size, className }))}>
+    <div className={cn(menuVariants({ variant, size, className }))}>
       <div
         className="flex flex-row justify-between items-center gap-4"
         onClick={onClickMenu}
       >
-        <Text text={title} as="p" variant="base" />
-        {open ? (
-          <Icon icon="ChevronUp" size="xs" />
-        ) : (
-          <Icon icon="ChevronDown" size="xs" />
-        )}
+        <Text text={title} as="p" size="md" />
+        <Icon icon="ChevronDownBlue" size="xs" />
       </div>
       {open && (
         <div className="shadow-grey border-light-purple bg-white z-[99] absolute min-w-[10rem] p-4 rounded-lg border-[0.1rem] border-solid right-0 top-10">
@@ -43,10 +39,10 @@ export function Menu({ className, variant, size, title, menuData }: MenuProps) {
             onClick={() => setOpen(false)}
             className="list-none p-0 hover:cursor-pointer "
           >
-            {menuData?.map(({ id, menu, link }) => (
+            {data?.map(({ id, menu, link }: MenuTypes) => (
               <li
                 key={id}
-                className="font-medium py-2 px-4 hover:bg-light-purple hover:text-white rounded-sm text-sm"
+                className="font-medium py-2 px-4 hover:bg-light-purple hover:text-santa-grey rounded-sm text-sm"
               >
                 {link ? (
                   <Link href={link} className="block">
@@ -64,7 +60,7 @@ export function Menu({ className, variant, size, title, menuData }: MenuProps) {
   );
 }
 
-const menuVariansts = cva("relative flex flex-row justify-start items-center", {
+const menuVariants = cva("relative flex flex-row justify-start items-center", {
   variants: {
     variant: {
       standard: "",

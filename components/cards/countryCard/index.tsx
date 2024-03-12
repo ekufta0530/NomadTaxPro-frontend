@@ -4,9 +4,6 @@ import Image from "next/image";
 import { Icon } from "common/media/icon";
 import { Text } from "common/widgets/basic/text";
 import { Button } from "common/widgets/basic/button";
-import { Select } from "common/widgets/basic/select";
-import { anchorSelectData } from "data/static/selectData";
-import { auxiliarySelectData } from "data/static/selectData";
 import { CountryCardProps } from "types/cards";
 
 export function CountryCard({
@@ -16,7 +13,7 @@ export function CountryCard({
   credits,
 }: CountryCardProps) {
   return (
-    <div className="py-5 px-5 w-[23.188rem] relative  shadow-grey rounded-[1.25rem]">
+    <div className="py-5 px-5 w-[21.5rem] relative shadow-grey rounded-[1.25rem]">
       <Image
         src={img}
         alt="anguilla"
@@ -24,7 +21,7 @@ export function CountryCard({
       />
       <Text
         as="h1"
-        className="text-left mt-10 "
+        className="text-left mt-5"
         text={country}
         color="nile-blue"
         size="lg"
@@ -32,13 +29,13 @@ export function CountryCard({
       />
       <Text
         as="p"
-        className="text-left"
+        className="text-left mt-1"
         text={person}
         color="cold-purple"
         size="sm"
         weight="regular"
       />
-      <Flex variant="rowBetweenCenter" className="mt-10">
+      <Flex variant="rowBetweenCenter" className="mt-5 mb-2">
         <Text
           as="p"
           className="text-left"
@@ -50,8 +47,8 @@ export function CountryCard({
         <Button
           variant="solid-dark-blue"
           text="Learn More"
-          size="sm"
-          className="w-[6.625rem] h-[2.125rem] rounded-full text-sm"
+          size="md"
+          className="rounded-full text-sm"
         />
       </Flex>
       <Icon

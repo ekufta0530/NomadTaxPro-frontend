@@ -13,33 +13,37 @@ export function Home() {
   return (
     <div>
       <DashboardHeader />
-      <Flex variant="rowStartCenter" className="mt-10">
+      <div className="mt-10 grid grid-cols-[100%]  md:grid-cols-[calc(50%-10rem),50%,7.5rem] w-full gap-4">
         <Input
           variant="outline"
           icon="Search"
-          containerClass="rounded-s-xl  w-[53.75rem]  h-[3.5rem]"
+          containerClass="rounded-s-xl h-[3.5rem]"
         />
-        <Select
-          data={anchorSelectData}
-          containerClass="min-w-[15.313rem] h-[3.5rem]"
-        />
-        <Select
-          data={auxiliarySelectData}
-          containerClass="min-w-[15.313rem] h-[3.5rem]"
-        />
-
-        <Icon
-          icon="Dashboard"
-          variant="outline"
-          className="h-[3.5rem] w-[3.75rem] p-5"
-        />
-        <Icon
-          icon="Apps"
-          variant="outline"
-          className="h-[3.5rem] w-[3.75rem] p-5  bg-white"
-        />
-      </Flex>
-      <Map type="CountryCard" data={countryCardData} className="mt-5" />
+        <Flex>
+          <Select data={anchorSelectData} containerClass="w-full h-[3.5rem]" />
+          <Select
+            data={auxiliarySelectData}
+            containerClass="w-full h-[3.5rem]"
+          />
+        </Flex>
+        <Flex>
+          <Icon
+            icon="Dashboard"
+            variant="outline"
+            className="h-[3.5rem] w-[3.75rem] p-4"
+          />
+          <Icon
+            icon="Apps"
+            variant="outline"
+            className="h-[3.5rem] w-[3.75rem] p-3  bg-white"
+          />
+        </Flex>
+      </div>
+      <Map
+        type="CountryCard"
+        data={countryCardData}
+        className="mt-5 mb-40 flex-wrap justify-center"
+      />
     </div>
   );
 }
