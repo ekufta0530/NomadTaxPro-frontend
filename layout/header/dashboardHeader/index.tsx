@@ -1,14 +1,24 @@
-import { imgs } from "data/static/imgData";
 import React from "react";
-const { header } = imgs;
+import { Text } from "common/widgets/basic/text";
+import { Flex } from "common/widgets/advance/flex";
 
 export function DashboardHeader() {
   return (
-    <div
-      className={`bg-cover bg-center h-64  from-dark-blue to-nile-blue
+    <Flex
+      variant="columnCenterStart"
+      className={` mt-10 bg-cover bg-center h-80  from-dark-blue to-nile-blue rounded-[1.875rem]
             bg-[linear-gradient(to_right,rgba(134,139,255,.75),rgba(67,24,255,.75)),url("../public/assets/imgs/header.png")]`}
     >
-      <div>The HR platform for global businesses!</div>
-    </div>
+      <Text
+        size="4xl"
+        as="h1"
+        weight="semiBold"
+        color="white"
+        className="leading-tight ml-10"
+      >
+        The HR platform for global <br className="hidden md:block" />{" "}
+        businesses!
+      </Text>
+    </Flex>
   );
 }

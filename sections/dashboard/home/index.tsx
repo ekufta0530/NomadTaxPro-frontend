@@ -13,33 +13,33 @@ export function Home() {
   return (
     <div>
       <DashboardHeader />
-      <Flex variant="rowStartCenter" className=" py-5">
+      <Flex variant="rowStartCenter" className="mt-10">
         <Input
           variant="outline"
           icon="Search"
-          containerClass="rounded-s-xl mt-20 w-[53.75rem]  h-[3.75rem]"
+          containerClass="rounded-s-xl  w-[53.75rem]  h-[3.5rem]"
         />
         <Select
           data={anchorSelectData}
-          containerClass="mt-20 w-[15.313rem] h-[3.75rem]"
+          containerClass="min-w-[15.313rem] h-[3.5rem]"
         />
         <Select
           data={auxiliarySelectData}
-          containerClass="mt-20 w-[15.313rem] h-[3.75rem]"
+          containerClass="min-w-[15.313rem] h-[3.5rem]"
         />
 
         <Icon
           icon="Dashboard"
           variant="outline"
-          className="h-[3.75rem] w-[3.75rem] p-5 mt-20 "
+          className="h-[3.5rem] w-[3.75rem] p-5"
         />
         <Icon
           icon="Apps"
           variant="outline"
-          className="h-[3.75rem] w-[3.75rem] p-5 mt-20 bg-white"
+          className="h-[3.5rem] w-[3.75rem] p-5  bg-white"
         />
       </Flex>
-      <Map type="CountryCard" data={countryCardData} />
+      <Map type="CountryCard" data={countryCardData} className="mt-5" />
     </div>
   );
 }
