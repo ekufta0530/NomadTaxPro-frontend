@@ -11,30 +11,38 @@ import { imgs } from "data/static/imgData";
 import { Map } from "components/map";
 import { Group } from "common/widgets/advance/group";
 import Image from "next/image";
+import { Benefits } from "./benefits";
 
 export function CountryDetail() {
   const { greece1 } = imgs;
   return (
-    <div>
-      <Flex variant="rowStartCenter" className="mt-10">
-        <Image src={greece1} alt="greece1" className="w-full h-full" />
-        <div className="px-5 py-5">
-          <Flex
-            variant="columnCenterCenter"
-            className="w-[23rem] h-[23.188rem] rounded-[1.25rem] shadow-grey gap-2 px-10"
-          >
+    <>
+      <Flex
+        variant="rowStartStart"
+        className="mt-20 w-full flex-col justify-center items-center lg:flex-row lg:justify-start lg:items-start "
+      >
+        <div className="w-full lg:w-[calc(100%-25rem)] h-[20rem] sm:h-[30rem] lg:h-[40rem] ">
+          <Image
+            src={greece1}
+            alt="greece1"
+            className="w-full h-full object-cover rounded-2xl"
+          />
+        </div>
+        <Flex variant="columnStartStart" className="w-[25rem] h-full">
+          <div className="w-full h-[23rem] rounded-[1.25rem] shadow-grey-xs  px-3">
             <Text
               as="h1"
               text="Standard Rates"
               size="xl"
-              className="bold text-center"
+              weight="medium"
               color="nile-blue"
+              className="text-center mt-5"
             />
             <Text
               as="p"
               text="These tax rates are indicative and subject to change. Consulting a tax professional is crucial for accurate and personalized advice."
               size="sm"
-              className="regular text-center px-4 mt-0"
+              className="regular text-center px-4 mt-2"
               color="cold-purple"
             />
             <Flex variant="rowBetweenCenter" className="w-full mt-10">
@@ -117,11 +125,8 @@ export function CountryDetail() {
                 color="nile-blue"
               />
             </Flex>
-          </Flex>
-          <Flex
-            variant="columnCenterCenter"
-            className="w-[23rem] h-[19.625rem] rounded-[1.25rem] shadow-grey gap-2 px-10 "
-          >
+          </div>
+          <div className="w-full h-[20rem] mt-10 rounded-[1.25rem] shadow-grey-xs px-3 ">
             <Text
               as="h1"
               text="With 50% Reduction"
@@ -216,72 +221,10 @@ export function CountryDetail() {
                 color="nile-blue"
               />
             </Flex>
-          </Flex>
-        </div>
+          </div>
+        </Flex>
       </Flex>
-      <Text
-        size="xl"
-        as="h1"
-        weight="bold"
-        color="nile-blue"
-        className="mt-10 leading-tight"
-      >
-        Greece: A Premier Destination for Digital Nomads Remember: Consult a Tax
-        <br /> Professional for Personalized Advice!
-      </Text>
-      <Text
-        as="h3"
-        text="Embark on Your Greek Odyssey: The Ideal Digital Nomad Destination"
-        size="lg"
-        weight="bold"
-        color="dark-grey"
-        className="mt-10 leading-tight"
-      />
-      <Text
-        as="p"
-        text="Discover Greece, not just as a country but as an idyllic lifestyle choice for digital nomads. Renowned as a perfect anchor country, Greece marries financial incentives with a lifestyle that's both enriching and relaxing, making it a top choice for remote workers from across the globe."
-        size="sm"
-        weight="regular"
-        color="dark-grey"
-        className="mt-10 leading-tight"
-      />
-      <Text
-        as="p"
-        text="Financial Benefits Tailored for Digital Nomads: Greece rolls out the red carpet for digital nomads with its distinct financial advantages:"
-        size="sm"
-        weight="regular"
-        color="dark-grey"
-        className="mt-10 leading-tight"
-      />
-      <Text
-        as="h1"
-        text="Financial Benefits"
-        size="xl"
-        weight="bold"
-        color="nile-blue"
-        className="mt-10 leading-tight"
-      />
-      <Flex
-        variant="columnCenterCenter"
-        className="w-[23.188rem] h-[17.375rem] shadow-grey rounded-[1.25rem]"
-      >
-        <Icon icon="Sun" size="sm" />
-        <Text
-          as="h1"
-          text="Sun-Kissed Climate"
-          size="lg"
-          weight="bold"
-          color="nile-blue"
-        />
-        <Text
-          as="p"
-          text="Greece's Mediterranean climate promises sunny days, ideal for both productivity and relaxation."
-          size="xs"
-          weight="medium"
-          color="cold-purple"
-          className="px-12 text-center"
-        />
-      </Flex>
-    </div>
+      <Benefits />
+    </>
   );
 }
