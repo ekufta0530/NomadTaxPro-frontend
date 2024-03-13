@@ -15,12 +15,20 @@ interface MenuProps extends VariantProps<typeof menuVariants> {
   size?: "xs";
   title: string;
   data: Array<MenuTypes>;
+  onClickMenu?: (id: number) => void;
 }
 
-export function Menu({ className, variant, size, title, data }: MenuProps) {
+export function Menu({
+  className,
+  variant,
+  size,
+  title,
+  data,
+  onClickMenu,
+}: MenuProps) {
   const [open, setOpen] = useState<boolean>(false);
 
-  const onClickMenu = () => {
+  const handleOpenMenu = () => {
     setOpen(!open);
   };
 
@@ -28,7 +36,7 @@ export function Menu({ className, variant, size, title, data }: MenuProps) {
     <div className={cn(menuVariants({ variant, size, className }))}>
       <div
         className="flex flex-row justify-between items-center gap-4"
-        onClick={onClickMenu}
+        onClick={handleOpenMenu}
       >
         <Text text={title} as="p" size="md" />
         <Icon icon="ChevronDownBlue" size="xs" />
@@ -41,6 +49,7 @@ export function Menu({ className, variant, size, title, data }: MenuProps) {
           >
             {data?.map(({ id, menu, link }: MenuTypes) => (
               <li
+                onClick={() => onClickMenu && onClickMenu(id)}
                 key={id}
                 className="font-medium py-2 px-4 hover:bg-light-purple hover:text-santa-grey rounded-sm text-sm"
               >

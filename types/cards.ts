@@ -1,4 +1,5 @@
 import { StaticImageData } from "next/image";
+import { Icons } from "./common";
 
 export type CountryCardProps = {
   id: number;
@@ -7,3 +8,10 @@ export type CountryCardProps = {
   person: string;
   credits: string;
 };
+
+
+export type BenefitCardProps  = {
+  icon:Icons;
+  title:string;
+  detail:string
+ }

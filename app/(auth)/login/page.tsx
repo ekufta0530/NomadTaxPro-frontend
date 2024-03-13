@@ -11,8 +11,10 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { Toastify } from "common/loaders/toastify";
 import { Loader } from "common/loaders/loader";
+import { useAuth } from "context/AuthContext";
 
 export default function Page() {
+  const { getCurrentUser } = useAuth();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -25,9 +27,9 @@ export default function Page() {
       email,
       password,
     });
-    console.log(data);
     if (res.status === 200) {
       localStorage.setItem("user", JSON.stringify(data));
+      getCurrentUser(data);
       router.push("/dashboard");
       setIsLoading(false);
     } else {

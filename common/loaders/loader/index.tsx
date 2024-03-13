@@ -1,6 +1,7 @@
 import { colors } from "data/static/colorData";
 import { CSSProperties } from "react";
 import BarLoader from "react-spinners/BarLoader";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 const { darkBlue, nileBlue } = colors;
 const override: CSSProperties = {
@@ -16,6 +17,7 @@ type LoaderTypes = {
 
 const loaders: LoaderTypes = {
   BarLoader,
+  ClimbingBoxLoader
 };
 
 export function Loader({
@@ -23,7 +25,7 @@ export function Loader({
   type,
 }: {
   loading: boolean;
-  type: "BarLoader";
+  type: "BarLoader" | "ClimbingBoxLoader";
 }) {
   const LoaderComponent = loaders[type];
 

@@ -28,26 +28,64 @@ export async function fetchMethod(
   const url = `${API_HOST}${endpoint}`;
 
   try {
+    const headers: any = {};
+
+    let body;
+    if (params instanceof FormData) {
+      body = params;
+    } else {
+      headers["Content-Type"] = "application/json";
+      if (method !== "GET") {
+        body = requestConfig.useFormURLEncoded
+          ? buildBody(params || {})
+          : JSON.stringify(params);
+      }
+    }
+
+    if (config?.token) {
+      headers["Authorization"] = config.token;
+    }
+
     const res = await fetch(url, {
       method,
       credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: config?.token,
-      },
-
-      ...(method !== "GET" && {
-        body: requestConfig.useFormURLEncoded
-          ? buildBody(params || {})
-          : JSON.stringify(params),
-      }),
+      headers,
+      body,
     });
-    const data = await res.json();
+
+    let data: null;
+    try {
+      data = await res.json();
+    } catch (error) {
+      data = null;
+    }
+
     return { res, data };
   } catch (error) {
     throw new Error(String(error));
   }
+
+  // try {
+  //   const res = await fetch(url, {
+  //     method,
+  //     credentials: "include",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       Authorization: config?.token,
+  //     },
+
+  //     ...(method !== "GET" && {
+  //       body: requestConfig.useFormURLEncoded
+  //         ? buildBody(params || {})
+  //         : JSON.stringify(params),
+  //     }),
+  //   });
+  //   const data = await res.json();
+  //   return { res, data };
+  // } catch (error) {
+  //   throw new Error(String(error));
+  // }
 }
 
 export const http = {

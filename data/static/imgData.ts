@@ -5,6 +5,7 @@ import algeria from "public/assets/imgs/Algeria.svg";
 import andora from "public/assets/imgs/Andora.svg";
 import angola from "public/assets/imgs/Angola.svg";
 import header from "public/assets/imgs/header.png";
+import avatar from "public/assets/imgs/avatar.png";
 
 export const imgs: Record<string, any> = {
   logo,
@@ -14,4 +15,5 @@ export const imgs: Record<string, any> = {
   andora,
   angola,
   header,
+  avatar,
 };

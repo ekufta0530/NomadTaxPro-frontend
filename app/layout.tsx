@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, DM_Sans } from "next/font/google";
 import "../styles/globals.css";
+import { AuthProvider } from "context/AuthContext";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -21,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} ${dmSans.className}`}>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

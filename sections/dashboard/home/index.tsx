@@ -18,6 +18,7 @@ export function Home() {
           variant="outline"
           icon="Search"
           containerClass="rounded-s-xl h-[3.5rem]"
+          placeholder="Search country..."
         />
         <Flex>
           <Select data={anchorSelectData} containerClass="w-full h-[3.5rem]" />

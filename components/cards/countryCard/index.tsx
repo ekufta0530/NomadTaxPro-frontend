@@ -61,7 +61,7 @@ export function CountryCard({
         icon="HeartOutline"
         size="sm"
         variant="circle"
-        className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2 absolute top-10 right-8"
+        className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2 absolute top-9 right-8"
       />
       {/* <Icon
         icon="HeartFilled"
@@ -69,6 +69,8 @@ export function CountryCard({
         variant="circle"
         className="w-[2.25rem] h-[2.25rem] bg-white px-2 py-2"
       /> */}
+
+     
     </div>
   );
 }
