@@ -5,13 +5,11 @@ export type CountryCardProps = {
   id: number;
   img: StaticImageData;
   country: string;
-  person: string;
   credits: string;
 };
 
-
-export type BenefitCardProps  = {
-  icon:Icons;
-  title:string;
-  detail:string
- }
+export type BenefitCardProps = {
+  icon: Icons;
+  title: string;
+  detail: string;
+};

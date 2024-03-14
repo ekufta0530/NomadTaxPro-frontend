@@ -9,7 +9,6 @@ import { CountryCardProps } from "types/cards";
 export function CountryCard({
   img,
   country,
-  person,
   credits,
 }: CountryCardProps) {
   return (
@@ -17,7 +16,7 @@ export function CountryCard({
       <Image
         src={img}
         alt="anguilla"
-        className="rounded-[1.125rem] h-[15.188rem] w-[20.563rem]"
+        className="rounded-[1.5rem] h-[15.188rem] w-[20.563rem]"
       />
       <Text
         as="h1"
@@ -27,14 +26,14 @@ export function CountryCard({
         size="lg"
         weight="bold"
       />
-      <Text
+      {/* <Text
         as="p"
         className="text-left mt-1"
         text={person}
         color="cold-purple"
         size="sm"
         weight="regular"
-      />
+      /> */}
       <Flex variant="rowBetweenCenter" className="mt-5 mb-2">
         <Text
           as="p"
@@ -46,7 +45,7 @@ export function CountryCard({
         />
         <Button
           variant="solid-dark-blue"
-          text="Learn More"
+          text="See Details"
           size="md"
           className="rounded-full text-sm"
         />
