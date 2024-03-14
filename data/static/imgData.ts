@@ -39,8 +39,9 @@ import spain1 from "public/assets/imgs/countries/spain_1.jpeg";
 import thailand1 from "public/assets/imgs/countries/thailand_1.jpeg";
 import thailand2 from "public/assets/imgs/countries/thailand_2.jpeg";
 import uruguay1 from "public/assets/imgs/countries/uruguay_1.jpeg";
+import usa from "public/assets/imgs/countries/usa.jpeg";
 
-export const imgs: Record<string, any> = {
+export const imgs = {
   logo,
   profilePicture,
   albania,
@@ -82,4 +83,5 @@ export const imgs: Record<string, any> = {
   thailand1,
   thailand2,
   uruguay1,
+  usa,
 };

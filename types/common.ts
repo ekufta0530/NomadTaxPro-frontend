@@ -22,7 +22,7 @@ export type Icons =
 
 export type SelectMenu = {
   id: number;
-  value: string;
+  value: string | number;
   option: string;
 };
 

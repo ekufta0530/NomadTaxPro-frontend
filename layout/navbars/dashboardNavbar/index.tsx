@@ -96,13 +96,13 @@ export function DashboardNavbar() {
         <Image src={logo} alt="logo" />
         <Flex
           variant="rowStartCenter"
-          className="shadow-grey-xs px-5 py-2 rounded-full"
+          className="shadow-grey-xs pl-5 py-2 pr-1 rounded-full"
         >
           <Input
             variant="rounded-light-grey"
             icon="Search"
             size="xs"
-            className="h-10 w-20 sm:w-44"
+            className="h-10 w-20 sm:w-32"
           />
           <Icon icon="Notification" size="xs" />
           <Icon icon="Info" size="xs" />

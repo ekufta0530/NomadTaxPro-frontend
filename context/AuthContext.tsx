@@ -35,13 +35,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const getLocalUser = () => {
     const user = JSON.parse(localStorage.getItem("user") as string);
-    if (user) {
-      router.push("/dashboard");
-      setCurrentUser(user);
-    }
     if (!user && pathname.includes("dashboard")) {
       router.push("/login");
     }
+    if (user && !pathname.includes("dashboard")) {
+      router.push("/dashboard");
+    }
+    setCurrentUser(user);
   };
 
   const getCurrentUser = (user: UserProps) => {

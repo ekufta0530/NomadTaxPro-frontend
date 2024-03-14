@@ -21,15 +21,15 @@ export function CountryDetail() {
         variant="rowStartStart"
         className="mt-20 w-full flex-col justify-center items-center lg:flex-row lg:justify-start lg:items-start "
       >
-        <div className="w-full lg:w-[calc(100%-25rem)] h-[20rem] sm:h-[30rem] lg:h-[40rem] ">
+        <div className="w-full lg:w-[calc(100%-23rem)] h-[20rem] sm:h-[30rem] lg:h-[35rem] ">
           <Image
             src={greece1}
             alt="greece1"
             className="w-full h-full object-cover rounded-2xl"
           />
         </div>
-        <Flex variant="columnStartStart" className="w-[25rem] h-full">
-          <div className="w-full h-[23rem] rounded-[1.25rem] shadow-grey-xs  px-3">
+        <Flex variant="columnStartStart" className="w-[23rem] h-full">
+          <div className="w-full  rounded-[1.25rem] shadow-grey-xs  p-3">
             <Text
               as="h1"
               text="Standard Rates"
@@ -126,7 +126,7 @@ export function CountryDetail() {
               />
             </Flex>
           </div>
-          <div className="w-full h-[20rem] mt-10 rounded-[1.25rem] shadow-grey-xs px-3 ">
+          <div className="w-full  mt-10 rounded-[1.25rem] shadow-grey-xs px-3 ">
             <Text
               as="h1"
               text="With 50% Reduction"
