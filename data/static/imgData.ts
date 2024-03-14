@@ -40,6 +40,7 @@ import thailand1 from "public/assets/imgs/countries/thailand_1.jpeg";
 import thailand2 from "public/assets/imgs/countries/thailand_2.jpeg";
 import uruguay1 from "public/assets/imgs/countries/uruguay_1.jpeg";
 import usa from "public/assets/imgs/countries/usa.jpeg";
+import berbodas from "public/assets/imgs/countries/berbodas.jpeg";
 
 export const imgs = {
   logo,
@@ -84,4 +85,5 @@ export const imgs = {
   thailand2,
   uruguay1,
   usa,
+  berbodas,
 };

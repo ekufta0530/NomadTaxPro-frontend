@@ -16,6 +16,7 @@ export const API = {
     favorite: {
       add: "/api/country/favorite/add",
       remove: "/api/country/favorite/remove",
+      get:"/api/country/favorite/get"
     },
   },
 };

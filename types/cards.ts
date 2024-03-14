@@ -3,9 +3,9 @@ import { Icons } from "./common";
 
 export type CountryCardProps = {
   id: number;
-  img: StaticImageData;
-  country: string;
-  credits: string;
+  image: StaticImageData | null;
+  country_name: string;
+  cost_of_living_single?: number | null;
 };
 
 export type BenefitCardProps = {
