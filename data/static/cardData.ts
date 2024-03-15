@@ -133,11 +133,13 @@ export const countryCardData = [
     finanical_benefits_tagline: "Fiscal Freedom and Flexibility",
     financial_benefits: [
       {
+        icon: "CostEffective",
         benefit: "No Taxation on Foreign Sourced Income",
         description:
           "Embrace the fiscal liberty with Croatia's tax regime that exempts foreign-sourced income from local taxation. This is a major boon for digital nomads, whose earnings often originate internationally.",
       },
       {
+        icon: "Stars",
         benefit: "Flexible Visa Duration",
         description:
           "Croatia's digital nomad visa offers a unique combination of stability and flexibility. Valid for a year, visa holders must leave the country and wait out the 90-day reapplication waiting period, presenting an excellent opportunity to explore other countries.",
@@ -168,21 +170,25 @@ export const countryCardData = [
     ],
     lifestyle_points: [
       {
+        icon: "Sun",
         point: "Sunny and Serene Climate",
         description:
           "Revel in Croatia's Mediterranean climate, characterized by long, sun-drenched summers and mild winters — perfect for any digital nomad.",
       },
       {
+        icon: "Communication",
         point: "Language Convenience",
         description:
           "Navigate with ease as English is commonly spoken, making both social and professional interactions hassle-free.",
       },
       {
+        icon: "CostEffective",
         point: "Affordable Living",
         description:
           "Benefit from a cost of living that’s gentle on the wallet without compromising on the quality of life.",
       },
       {
+        icon: "Landscape",
         point: "Scenic Workspaces",
         description:
           "From the historic streets of Dubrovnik to the tranquil Adriatic coast, Croatia offers a plethora of beautiful settings that can transform into your next remote office.",
@@ -190,16 +196,19 @@ export const countryCardData = [
     ],
     Additional_benefits: [
       {
+        icon: "Stars",
         benefit: "Rich Cultural Tapestry",
         description:
           "Croatia's history and culture are as deep as the Adriatic. Explore ancient forts, savor local cuisines, and immerse yourself in vibrant cultural festivals.",
       },
       {
+        icon: "Users",
         benefit: "Digital Nomad Community",
         description:
           "Join an expanding community of digital nomads, fostering networking opportunities and a sense of belonging.",
       },
       {
+        icon: "Technology",
         benefit: "High-Speed Connectivity",
         description:
           "Stay connected with Croatia's reliable internet infrastructure, ensuring uninterrupted productivity for your remote ventures.",
@@ -244,11 +253,13 @@ export const countryCardData = [
     finanical_benefits_tagline: "Low Cost of Living and Special Regimes:",
     financial_benefits: [
       {
+        icon: "CostEffective",
         benefit: "No Taxation on Foreign Sourced Income",
         description:
           "Embrace the fiscal liberty with Georgia's tax regime that exempts foreign-sourced income from local taxation. This is a major boon for digital nomads, whose earnings often originate internationally.",
       },
       {
+        icon: "Stars",
         benefit: "One-Year Visa Accessibility",
         description:
           "Remarkably, individuals from 95 countries can obtain a one-year visa to work and live in Georgia. This makes it a viable option for those seeking a longer-term base in an eclectic and welcoming environment.",
@@ -268,21 +279,25 @@ export const countryCardData = [
     Reduced_rate: [],
     lifestyle_points: [
       {
+        icon: "Sun",
         point: "Diverse Climate",
         description:
           "From the snow-capped peaks of the Caucasus Mountains to the warm shores of the Black Sea, Georgia's climate is as varied as its landscape, offering something for every preference.",
       },
       {
+        icon: "Stars",
         point: "Rich Cultural Heritage",
         description:
           "Immerse yourself in a land where ancient traditions meet contemporary life. Georgia's history, music, and dance are deeply interwoven into the fabric of everyday life, offering a truly authentic experience.",
       },
       {
+        icon: "CostEffective",
         point: "Affordable Cost of Living",
         description:
           "Georgia is known for its affordability, allowing you to enjoy a high standard of living without the high costs. This makes it particularly attractive for digital nomads looking to maximize their quality of life.",
       },
       {
+        icon: "Landscape",
         point: "Culinary Delights",
         description:
           "Indulge in the flavors of Georgian cuisine, famous for its unique spices, hearty dishes, and, of course, the legendary Georgian wine. Scenic Workspaces: From the historic streets of Dubrovnik to the tranquil Adriatic coast, Croatia offers a plethora of beautiful settings that can transform into your next remote office.",
@@ -290,16 +305,19 @@ export const countryCardData = [
     ],
     Additional_benefits: [
       {
+        icon: "Users",
         benefit: "Growing Expat Community",
         description:
           "Connect with a diverse group of expats and digital nomads who are discovering the joys of living and working in Georgia.",
       },
       {
+        icon: "Technology",
         benefit: "Reliable Internet Connectivity",
         description:
           "With a focus on technological development, Georgia offers reliable internet, a crucial factor for remote work.",
       },
       {
+        icon: "Communication",
         benefit: "Safety and Hospitality",
         description:
           "Known for its hospitality, Georgia is also considered a safe country, making it a comfortable choice for solo travelers and expats alike.",
@@ -345,11 +363,13 @@ export const countryCardData = [
       "Financial Benefits Tailored for Digital Nomads:",
     financial_benefits: [
       {
+        icon: "CostEffective",
         benefit: "No Taxation on Foreign Income",
         description:
           "Dive into the fiscal paradise where there's no taxation on foreign-sourced income, perfect for those embracing the remote working lifestyle.",
       },
       {
+        icon: "Stars",
         benefit: "Attractive Tax Reduction for Extended Stays",
         description:
           "Planning a longer sojourn? Stay for two years and relish a 50% tax reduction on Greek-sourced income, significantly enhancing your financial journey in Greece.",
@@ -415,21 +435,25 @@ export const countryCardData = [
     ],
     lifestyle_points: [
       {
+        icon: "Sun",
         point: "Sun-Kissed Climate",
         description:
           "Greece's Mediterranean climate promises sunny days, ideal for both productivity and relaxation.",
       },
       {
+        icon: "Communication",
         point: "Ease of Communication",
         description:
           "With English widely spoken, you'll find it easy to integrate into the local community and conduct your business.",
       },
       {
+        icon: "CostEffective",
         point: "Cost-Effective Living",
         description:
           "Enjoy high-quality living at an affordable cost — a boon for budget-conscious nomads.",
       },
       {
+        icon: "Landscape",
         point: "Picturesque Settings",
         description:
           "From ancient ruins to stunning seascapes, Greece offers a work environment like no other.",
@@ -437,16 +461,19 @@ export const countryCardData = [
     ],
     Additional_benefits: [
       {
+        icon: "Stars",
         benefit: "Cultural Riches",
         description:
           "Dive into Greece's deep-rooted history and vibrant culture.",
       },
       {
+        icon: "Users",
         benefit: "Community and Networking",
         description:
           "Join an expanding network of digital nomads and locals for a fulfilling social life.",
       },
       {
+        icon: "Technology",
         benefit: "Healthcare and Technology",
         description:
           "Benefit from excellent healthcare and reliable internet, essentials for a worry-free nomadic lifestyle.",

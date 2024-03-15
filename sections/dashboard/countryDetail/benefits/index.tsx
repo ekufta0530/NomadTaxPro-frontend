@@ -11,8 +11,9 @@ import { imgs } from "data/static/imgData";
 import { Map } from "components/map";
 import { Group } from "common/widgets/advance/group";
 import Image from "next/image";
+import { BenefitCard } from "components/cards/benefitCard";
 
-export function Benefits() {
+export function Benefits({ financial_benefits, lifestyle_points }: any) {
   return (
     <div>
       <Text
@@ -49,6 +50,7 @@ export function Benefits() {
         color="dark-grey"
         className="mt-10 leading-tight"
       />
+
       <Text
         as="h1"
         text="Financial Benefits"
@@ -57,27 +59,16 @@ export function Benefits() {
         color="nile-blue"
         className="mt-10 leading-tight"
       />
-      <Flex
-        variant="columnCenterCenter"
-        className="w-[23.188rem] h-[17.375rem] shadow-grey rounded-[1.25rem]"
-      >
-        <Icon icon="Sun" size="sm" />
-        <Text
-          as="h1"
-          text="Sun-Kissed Climate"
-          size="lg"
-          weight="bold"
-          color="nile-blue"
-        />
-        <Text
-          as="p"
-          text="Greece's Mediterranean climate promises sunny days, ideal for both productivity and relaxation."
-          size="xs"
-          weight="medium"
-          color="cold-purple"
-          className="px-12 text-center"
-        />
-      </Flex>
+      <Map type="BenefitCard" data={financial_benefits} className="flex-wrap" />
+      <Text
+        as="h1"
+        text="A Lifestyle That Inspires:"
+        size="xl"
+        weight="bold"
+        color="nile-blue"
+        className="mt-10 leading-tight"
+      />
+      <Map type="BenefitCard" data={lifestyle_points} className="flex-wrap" />
     </div>
   );
 }

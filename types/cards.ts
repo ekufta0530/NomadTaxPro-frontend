@@ -10,6 +10,7 @@ export type CountryCardProps = {
 
 export type BenefitCardProps = {
   icon: Icons;
-  title: string;
-  detail: string;
+  point?: string;
+  benefit?: string;
+  description: string;
 };
