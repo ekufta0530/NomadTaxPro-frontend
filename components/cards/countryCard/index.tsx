@@ -10,7 +10,6 @@ import { CountryCardProps } from "types/cards";
 import { API } from "utils/api";
 import { http } from "utils/http";
 import { toast } from "react-toastify";
-import { Toastify } from "common/loaders/toastify";
 import { useAuth } from "context/AuthContext";
 import { useCountry } from "context/CountryContext";
 

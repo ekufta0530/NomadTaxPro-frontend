@@ -18,7 +18,8 @@ export type Icons =
   | "Stars"
   | "Search"
   | "Sun"
-  | "Technology";
+  | "Technology"
+  | "MenuBlack";
 
 export type SelectMenu = {
   id: number;

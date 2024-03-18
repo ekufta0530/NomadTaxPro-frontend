@@ -1,21 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { Flex } from "common/widgets/advance/flex";
-import { Icon } from "common/media/icon";
-import { Select } from "common/widgets/basic/select";
-import { Input } from "common/widgets/basic/input";
+import React from "react";
 import { Text } from "common/widgets/basic/text";
-import { Button } from "common/widgets/basic/button";
-import { Img } from "common/media/img";
-import { imgs } from "data/static/imgData";
-import { Map } from "components/map";
-import { Group } from "common/widgets/advance/group";
-import Image from "next/image";
 
 export function ScheduleList() {
   return (
-    <div>
-      <div>ScheduleList</div>
+    <div className="bg-light-grey rounded-[1.065rem] py-5 px-4 ">
+      <div className=" border-l-4  border-purple-blue">
+        <Text
+          as="h1"
+          size="md"
+          text="United Arab Emirates"
+          weight="semiBold"
+          color="nile-blue"
+          className="pl-3"
+        />
+        <Text
+          as="p"
+          size="xs"
+          text="15 Jan 2024- 21 Feb 2024"
+          weight="medium"
+          color="cold-purple"
+          className="pl-3"
+        />
+      </div>
     </div>
   );
 }

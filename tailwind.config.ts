@@ -29,6 +29,7 @@ const config: Config = {
         grey: "14px 40px 17px 4px rgba(112, 144, 176, 8%)",
         "grey-sm": "14px 20px 17px 4px rgba(112, 144, 176, 8%)",
         "grey-xs": "14px 15px 15px 4px rgba(112, 144, 176, 8%)",
+        "grey-xxs": "4px 4px 20px 10px rgba(112, 144, 176, 8%)",
       },
     },
   },

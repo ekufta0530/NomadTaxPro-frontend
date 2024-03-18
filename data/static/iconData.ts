@@ -18,7 +18,7 @@ import Search from "assets/icons/search.svg";
 import Sun from "assets/icons/sun.svg";
 import Technology from "assets/icons/technology.svg";
 import Users from "assets/icons/users.svg";
-
+import MenuBlack from "assets/icons/menu-black.svg";
 
 export const icons: Record<string, any> = {
   Apps,
@@ -41,4 +41,5 @@ export const icons: Record<string, any> = {
   Sun,
   Technology,
   Users,
+  MenuBlack,
 };
