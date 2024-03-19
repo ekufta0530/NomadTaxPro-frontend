@@ -22,7 +22,6 @@ export function CountryDetail({ detail }: { detail: any }) {
     financial_benefits,
     lifestyle_points,
   } = detail;
-  console.log(detail);
 
   return (
     <>
@@ -135,10 +134,7 @@ export function CountryDetail({ detail }: { detail: any }) {
           </div>
         </Flex>
       </Flex>
-      <Benefits
-        financial_benefits={financial_benefits}
-        lifestyle_points={lifestyle_points}
-      />
+      <Benefits detail={detail} />
     </>
   );
 }

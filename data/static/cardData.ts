@@ -146,7 +146,7 @@ export const countryCardData = [
       },
     ],
     key_consideration:
-      "To benefit from no taxation on foreign income, digital nomads should not engage in specific economic activities in Croatia. {It's essential to consult a tax professional to understand your specific tax situation.}",
+      "To benefit from no taxation on foreign income, digital nomads should not engage in specific economic activities in Croatia. {It's essential to consult a tax professional to understand your specific tax situation.",
     Currency_symbol: "HRK",
     Tax_rates: [
       {

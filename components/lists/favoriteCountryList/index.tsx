@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Flex } from "common/widgets/advance/flex";
 import { Icon } from "common/media/icon";
 import { Text } from "common/widgets/basic/text";
 import Image from "next/image";
 import { FavoriteCountryListProps } from "types/lists";
-import { Button } from "common/widgets/basic/button";
-import { CountryCardProps } from "types/cards";
 import { API } from "utils/api";
 import { http } from "utils/http";
 import { toast } from "react-toastify";
@@ -17,7 +15,8 @@ export function FavoriteCountryList({
   image,
   country_name,
   date,
-  onClickIcon,
+  favoriteCountryListClickId,
+  onFavoriteCountryListClick,
 }: FavoriteCountryListProps) {
   const { currentUser } = useAuth();
   const { getFavoriteCountries } = useCountry();
@@ -45,8 +44,11 @@ export function FavoriteCountryList({
 
   return (
     <Flex
+      onClick={() => onFavoriteCountryListClick(id as number)}
       variant="rowStartStart"
-      className="bg-light-grey rounded-[1.063rem] w-full  relative gap-2 p-2"
+      className={`${
+        id === favoriteCountryListClickId ? "bg-light-grey" : "bg-white"
+      } rounded-[1.063rem] w-full  relative gap-2 p-2 cursor-pointer`}
     >
       <Image
         src={image}
@@ -65,7 +67,7 @@ export function FavoriteCountryList({
         <Text
           as="p"
           size="xs"
-          text={date}
+          text="15 Jan 2024- 21 Feb 2024"
           color="cold-purple"
           weight="regular"
         />

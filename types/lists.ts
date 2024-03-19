@@ -3,5 +3,6 @@ export type FavoriteCountryListProps = {
   image: string;
   country_name: string;
   date: string;
-  onClickIcon: (id: number | string) => void;
+  onFavoriteCountryListClick: (id: number) => void;
+  favoriteCountryListClickId: number;
 };

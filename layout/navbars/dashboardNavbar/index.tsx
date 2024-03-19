@@ -18,6 +18,7 @@ import { Toastify } from "common/loaders/toastify";
 import { Backdrop } from "common/widgets/advance/backdrop";
 import { Loader } from "common/loaders/loader";
 import { Text } from "common/widgets/basic/text";
+import Link from "next/link";
 const { logo, avatar } = imgs;
 
 export function DashboardNavbar() {
@@ -93,7 +94,9 @@ export function DashboardNavbar() {
         variant="rowBetweenCenter"
         className="w-full flex-wrap justify-center sm:justify-between sm:flex-nowrap mt-5 sm:mt-0"
       >
-        <Image src={logo} alt="logo" />
+        <Link href="/dashboard">
+          <Image src={logo} alt="logo" />
+        </Link>
         <Flex
           variant="rowStartCenter"
           className="shadow-grey-xs pl-5 py-2 pr-1 rounded-full"

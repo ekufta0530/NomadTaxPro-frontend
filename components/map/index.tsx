@@ -6,6 +6,8 @@ import { CountryCard } from "components/cards/countryCard";
 import { BenefitCard } from "components/cards/benefitCard";
 import { FavoriteCountryList } from "components/lists/favoriteCountryList";
 import { FavoriteCountryListProps } from "types/lists";
+import { FavoriteCountryCollapse } from "components/colllapsibles/favoriteCountryCollapse";
+import { FavoriteCountryCollapseProps } from "types/collapsibles";
 
 interface Items {
   [key: string]: ComponentType<any>;
@@ -15,6 +17,7 @@ const items: Items = {
   CountryCard,
   BenefitCard,
   FavoriteCountryList,
+  FavoriteCountryCollapse,
 };
 
 export function Map({
@@ -22,13 +25,23 @@ export function Map({
   data,
   variant,
   className,
-  // onIconClick,
+  favoriteCountryListClickId,
+  onFavoriteCountryListClick,
 }: {
-  type: "CountryCard" | "BenefitCard" | "FavoriteCountryList";
+  type:
+    | "CountryCard"
+    | "BenefitCard"
+    | "FavoriteCountryList"
+    | "FavoriteCountryCollapse";
   variant?: FlexProps;
   className?: string;
-  data: CountryCardProps[] | BenefitCardProps[] | FavoriteCountryListProps[];
-  // onIconClick?: (id: number | string) => void;
+  data:
+    | CountryCardProps[]
+    | BenefitCardProps[]
+    | FavoriteCountryListProps[]
+    | FavoriteCountryCollapseProps[];
+  favoriteCountryListClickId?: number;
+  onFavoriteCountryListClick?: (id: number) => void;
 }) {
   const Item = items[type];
 
@@ -36,15 +49,18 @@ export function Map({
     <Flex variant={variant} className={className}>
       {data?.map(
         (
-          item: CountryCardProps | BenefitCardProps | FavoriteCountryListProps,
+          item:
+            | CountryCardProps
+            | BenefitCardProps
+            | FavoriteCountryListProps
+            | FavoriteCountryCollapseProps,
           index: number
         ) => (
           <Item
             key={index}
             {...item}
-            // onClick={() =>
-            //   onIconClick && onIconClick((item as FavoriteCountryListProps).id)
-            // }
+            onFavoriteCountryListClick={onFavoriteCountryListClick}
+            favoriteCountryListClickId={favoriteCountryListClickId}
           />
         )
       )}
