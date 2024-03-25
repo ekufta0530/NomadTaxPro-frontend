@@ -83,6 +83,8 @@ export function DashboardNavbar() {
             <Text
               size="xl"
               as="p"
+              weight="semiBold"
+              color="purple-blue"
               className="text-center"
               text="Please wait while the profile picture is uploading!"
             />
@@ -99,14 +101,8 @@ export function DashboardNavbar() {
         </Link>
         <Flex
           variant="rowStartCenter"
-          className="shadow-grey-xs pl-5 py-2 pr-1 rounded-full"
+          className="shadow-grey-xs pl-6 py-2 pr-1  rounded-full"
         >
-          <Input
-            variant="rounded-light-grey"
-            icon="Search"
-            size="xs"
-            className="h-10 w-20 sm:w-32"
-          />
           <Icon icon="Notification" size="xs" />
           <Icon icon="Info" size="xs" />
           <Img

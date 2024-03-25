@@ -2,7 +2,7 @@ import { VariantProps, cva } from "class-variance-authority";
 import React, { ReactNode } from "react";
 import { cn } from "utils/helpers/cn";
 
-interface TextProps extends VariantProps<typeof flexVariants> {
+interface FlexProps extends VariantProps<typeof flexVariants> {
   className?: string;
   children: ReactNode;
   onClick?: () => void;
@@ -14,7 +14,7 @@ export function Flex({
   variant,
   onClick,
   ...props
-}: TextProps) {
+}: FlexProps) {
   return (
     <div
       onClick={onClick}

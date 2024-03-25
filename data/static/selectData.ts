@@ -156,8 +156,8 @@ export const maxCostSelectData = [
   },
   {
     id: 7,
-    option: "7000",
-    value: 7000,
+    option: "7500",
+    value: 7500,
   },
   {
     id: 8,

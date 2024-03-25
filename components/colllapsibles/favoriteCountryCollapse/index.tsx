@@ -6,9 +6,13 @@ import { Icon } from "common/media/icon";
 import { Text } from "common/widgets/basic/text";
 import Image from "next/image";
 import { FavoriteCountryCollapseProps } from "types/collapsibles";
+import Link from "next/link";
+import { formatDateRange } from "utils/helpers/date";
 
 export function FavoriteCountryCollapse({
   id,
+  dateFrom,
+  dateTo,
   image,
   country_name,
   key_consideration,
@@ -32,16 +36,21 @@ export function FavoriteCountryCollapse({
       <div className="w-full">
         <Flex variant="rowBetweenCenter" className="w-full">
           <div>
-            <Text
-              as="h1"
-              text={country_name}
-              size="lg"
-              color="nile-blue"
-              weight="bold"
-            />
+            <Link
+              href={`/dashboard/country-detail/${id}`}
+              className="hover:underline"
+            >
+              <Text
+                as="h1"
+                text={country_name}
+                size="lg"
+                color="nile-blue"
+                weight="bold"
+              />
+            </Link>
             <Text
               as="p"
-              text="15 Jan 2024- 21 Feb 2024 "
+              text={formatDateRange(dateFrom, dateTo)}
               size="sm"
               color="cold-purple"
               weight="medium"

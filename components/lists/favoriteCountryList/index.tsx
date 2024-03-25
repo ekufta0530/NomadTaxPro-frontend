@@ -9,12 +9,17 @@ import { http } from "utils/http";
 import { toast } from "react-toastify";
 import { useAuth } from "context/AuthContext";
 import { useCountry } from "context/CountryContext";
+import Link from "next/link";
+import { Button } from "common/widgets/basic/button";
+import moment from "moment";
+import { formatDateRange } from "utils/helpers/date";
 
 export function FavoriteCountryList({
   id,
   image,
   country_name,
-  date,
+  dateFrom,
+  dateTo,
   favoriteCountryListClickId,
   onFavoriteCountryListClick,
 }: FavoriteCountryListProps) {
@@ -53,23 +58,29 @@ export function FavoriteCountryList({
       <Image
         src={image}
         alt="albania"
-        className="w-[5rem] h-[4rem] rounded-[.75rem] object-cover"
+        className="w-[5rem] h-[4.5rem] rounded-[.75rem] object-cover"
       />
       <div className="p-2">
-        <Text
-          as="h1"
-          size="md"
-          text={country_name}
-          color="nile-blue"
-          weight="semiBold"
-          className="leading-tight"
-        />
+        <Link
+          href={`/dashboard/country-detail/${id}`}
+          className="hover:underline"
+        >
+          <Text
+            as="h1"
+            size="md"
+            text={country_name}
+            color="nile-blue"
+            weight="semiBold"
+            className="leading-tight"
+          />
+        </Link>
         <Text
           as="p"
           size="xs"
-          text="15 Jan 2024- 21 Feb 2024"
+          text={formatDateRange(dateFrom, dateTo)}
           color="cold-purple"
           weight="regular"
+          className="mt-1"
         />
       </div>
       <Icon
@@ -78,6 +89,15 @@ export function FavoriteCountryList({
         className="absolute top-3 right-4"
         onClick={handleRemoveFavoriteCountry}
       />
+      {id !== 1 && (
+        <Button
+          variant="rounded-dark-blue"
+          size="xs"
+          text="+Stay"
+          className="absolute bottom-2 right-2 text-[.7rem] px-2 py-[.1rem] rounded-xl"
+          link="/dashboard/favorites#stay-modal"
+        />
+      )}
     </Flex>
   );
 }

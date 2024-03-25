@@ -2,23 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*  Text: Regular 0.875rem  */
-/*  Text: Regular 1.125rem  */
-/*  Text: Medium 0.875rem  */
-/*  Text: Medium 0.875rem  */
-/*  Text: Medium 0.75rem  */
-/*  Text: Medium 1.125rem  */
-/*  Text: SemiBold 3.75rem  */
-/*  Text: Bold 0.875rem  */
-/*  Text: Bold 1.125rem  */
-/*  Text: Bold 0.875rem  */
-/*  Text: Bold 0.75rem  */
-/*  Text: Bold 1rem  */
-/*  Text: Bold 1.875rem  */
-/*  Text: Bold 1.25rem  */
-/*  Text: Bold 1.375rem  */
-/*  Text: MIxed 1.625rem  */
-
 :root {
   background-color: white;
 }
@@ -45,4 +28,36 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+.calendar-container {
+  margin: 2rem 1rem 3rem 1rem;
+}
+
+.calendar-container .react-calendar {
+  border: none;
+}
+.calendar-container
+  .react-calendar
+  .react-calendar__month-view__weekdays__weekday
+  abbr {
+  text-decoration: none;
+  color: #1b2559;
+}
+.calendar-container
+  .react-calendar
+  .react-calendar__month-view__weekdays__weekday {
+  background-color: #f4f7fe;
+  padding: 0.5rem 1rem;
+}
+
+.calendar-container .react-calendar {
+  border-radius: 1rem;
+}
+
+.react-datepicker-popper {
 }

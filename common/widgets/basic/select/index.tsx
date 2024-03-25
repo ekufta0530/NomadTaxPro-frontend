@@ -44,6 +44,7 @@ export function Select({
           inputVariants({ variant, size, className }),
           "w-full h-full"
         )}
+        onChange={onChange}
       >
         {data?.map(({ id, value, option }: SelectMenu) => (
           <option key={id} value={value} hidden={id === 1 && hideOption}>

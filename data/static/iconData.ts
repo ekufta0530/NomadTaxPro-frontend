@@ -19,6 +19,7 @@ import Sun from "assets/icons/sun.svg";
 import Technology from "assets/icons/technology.svg";
 import Users from "assets/icons/users.svg";
 import MenuBlack from "assets/icons/menu-black.svg";
+import Cross from "assets/icons/cross.svg";
 
 export const icons: Record<string, any> = {
   Apps,
@@ -42,4 +43,5 @@ export const icons: Record<string, any> = {
   Technology,
   Users,
   MenuBlack,
+  Cross,
 };

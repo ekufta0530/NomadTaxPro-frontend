@@ -1,6 +1,7 @@
 import { colors } from "data/static/colorData";
 import { CSSProperties } from "react";
 import BarLoader from "react-spinners/BarLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 const { darkBlue, nileBlue } = colors;
@@ -17,7 +18,8 @@ type LoaderTypes = {
 
 const loaders: LoaderTypes = {
   BarLoader,
-  ClimbingBoxLoader
+  ClimbingBoxLoader,
+  BeatLoader,
 };
 
 export function Loader({
@@ -25,7 +27,7 @@ export function Loader({
   type,
 }: {
   loading: boolean;
-  type: "BarLoader" | "ClimbingBoxLoader";
+  type: "BarLoader" | "ClimbingBoxLoader" | "BeatLoader";
 }) {
   const LoaderComponent = loaders[type];
 

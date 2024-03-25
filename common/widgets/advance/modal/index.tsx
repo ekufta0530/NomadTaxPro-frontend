@@ -60,7 +60,7 @@ const modalVariants = cva("", {
   variants: {
     variant: {
       standard:
-        "fixed w-[50rem]  z-[9999] block overflow-y-auto overflow-x-hidden -translate-y-1/4 bg-white shadow-grey mt-4 mb-auto mx-auto rounded-lg top-1/4 inset-x-0",
+        "fixed w-[50rem]  z-[9999] block overflow-y-auto overflow-x-hidden -translate-y-1/4 bg-soft-peach shadow-grey mt-4 mb-auto mx-auto rounded-lg top-1/4 inset-x-0",
     },
     size: {
       xs: "w-[95%] md:w-[20rem]",

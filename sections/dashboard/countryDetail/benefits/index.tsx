@@ -23,8 +23,6 @@ export function Benefits({ detail }: any) {
     }
   );
 
-  console.log("financial_benefits_filtered", financial_benefits_filtered);
-
   return (
     <div>
       <Text

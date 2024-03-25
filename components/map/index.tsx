@@ -5,9 +5,10 @@ import { BenefitCardProps, CountryCardProps } from "types/cards";
 import { CountryCard } from "components/cards/countryCard";
 import { BenefitCard } from "components/cards/benefitCard";
 import { FavoriteCountryList } from "components/lists/favoriteCountryList";
-import { FavoriteCountryListProps } from "types/lists";
+import { FavoriteCountryListProps, ScheduleListProps } from "types/lists";
 import { FavoriteCountryCollapse } from "components/colllapsibles/favoriteCountryCollapse";
 import { FavoriteCountryCollapseProps } from "types/collapsibles";
+import { ScheduleList } from "components/lists/scheduleList";
 
 interface Items {
   [key: string]: ComponentType<any>;
@@ -18,6 +19,7 @@ const items: Items = {
   BenefitCard,
   FavoriteCountryList,
   FavoriteCountryCollapse,
+  ScheduleList,
 };
 
 export function Map({
@@ -32,16 +34,18 @@ export function Map({
     | "CountryCard"
     | "BenefitCard"
     | "FavoriteCountryList"
-    | "FavoriteCountryCollapse";
+    | "FavoriteCountryCollapse"
+    | "ScheduleList";
   variant?: FlexProps;
   className?: string;
   data:
     | CountryCardProps[]
     | BenefitCardProps[]
     | FavoriteCountryListProps[]
-    | FavoriteCountryCollapseProps[];
-  favoriteCountryListClickId?: number;
-  onFavoriteCountryListClick?: (id: number) => void;
+    | FavoriteCountryCollapseProps[]
+    | ScheduleListProps[];
+  favoriteCountryListClickId?: number | string | null;
+  onFavoriteCountryListClick?: (id: number | string | null) => void;
 }) {
   const Item = items[type];
 
@@ -53,7 +57,8 @@ export function Map({
             | CountryCardProps
             | BenefitCardProps
             | FavoriteCountryListProps
-            | FavoriteCountryCollapseProps,
+            | FavoriteCountryCollapseProps
+            | ScheduleListProps,
           index: number
         ) => (
           <Item

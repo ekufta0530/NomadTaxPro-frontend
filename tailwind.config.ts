@@ -24,6 +24,7 @@ const config: Config = {
         "french-grey": "#B0BBD5",
         "soft-peach": "#E9EDF7",
         "santa-grey": "#8F9BBA",
+        backdrop: "rgba(0, 0, 0, 0.5)",
       },
       boxShadow: {
         grey: "14px 40px 17px 4px rgba(112, 144, 176, 8%)",
