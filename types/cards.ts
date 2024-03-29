@@ -6,6 +6,8 @@ export type CountryCardProps = {
   image: StaticImageData | null;
   country_name: string;
   cost_of_living_single?: number | null;
+  key_consideration: string | null;
+  Tagline: string | null;
 };
 
 export type BenefitCardProps = {

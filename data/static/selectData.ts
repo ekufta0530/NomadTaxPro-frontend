@@ -1,3 +1,21 @@
+export const anchorAuxiliarySelectData = [
+  {
+    id: 1,
+    option: "Anchor/Auxiliary",
+    value: "anchor-auxiliary",
+  },
+  {
+    id: 2,
+    option: "Anchor",
+    value: "anchor",
+  },
+  {
+    id: 3,
+    option: "Auxiliary",
+    value: "auxiliary",
+  },
+];
+
 export const anchorSelectData = [
   {
     id: 1,
@@ -36,7 +54,7 @@ export const auxiliarySelectData = [
 // Menu Data
 
 export const dashboardNavMenuData = [
-  { id: 1, menu: "Favorites", link: "/dashboard/favorites" },
+  // { id: 1, menu: "Favorites", link: "/dashboard/favorites" },
   { id: 2, menu: "Logout" },
 ];
 

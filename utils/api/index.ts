@@ -22,5 +22,8 @@ export const API = {
       addUpdate: "/api/country/stay/add-update",
       get: "/api/country/stay/get",
     },
+    info: {
+      request: "/api/country/request-info",
+    },
   },
 };

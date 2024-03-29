@@ -1,17 +1,16 @@
 "use client";
 
 import React, { useState, useRef, ChangeEvent } from "react";
-import { Input } from "common/widgets/basic/input";
 import { Flex } from "common/widgets/advance/flex";
 import Image from "next/image";
 import { imgs } from "data/static/imgData";
 import { Img } from "common/media/img";
-import { Icon } from "common/media/icon";
 import { Menu } from "common/widgets/advance/menu";
 import { dashboardNavMenuData } from "data/static/selectData";
 import { http } from "utils/http";
 import { API } from "utils/api";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useAuth } from "context/AuthContext";
 import { toast } from "react-toastify";
 import { Toastify } from "common/loaders/toastify";
@@ -23,6 +22,7 @@ const { logo, avatar } = imgs;
 
 export function DashboardNavbar() {
   const router = useRouter();
+  const pathname = usePathname();
   const { currentUser, getCurrentUser } = useAuth();
   const imgRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -103,8 +103,23 @@ export function DashboardNavbar() {
           variant="rowStartCenter"
           className="shadow-grey-xs pl-6 py-2 pr-1  rounded-full"
         >
-          <Icon icon="Notification" size="xs" />
-          <Icon icon="Info" size="xs" />
+          <Link
+            href="/dashboard"
+            className={`text-sm ${
+              pathname === "/dashboard" && "text-purple-blue font-semibold"
+            }`}
+          >
+            Countries
+          </Link>
+          <Link
+            href="/dashboard/tracker"
+            className={`text-sm ${
+              pathname === "/dashboard/tracker" &&
+              "text-purple-blue font-semibold"
+            }`}
+          >
+            Tracker
+          </Link>
           <Img
             img={currentUser?.profileUrl || avatar}
             variant="circle"

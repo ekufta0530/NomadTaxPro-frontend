@@ -40,7 +40,7 @@ export function Modal({
 
   if (open) {
     return (
-      <div className="relative overflow-y-scroll overflow-x-hidden after:fixed after:overflow-hidden after:z-[999] after:inset-0 after:bg-backdrop">
+      <div className="relative overflow-y-scroll overflow-x-hidden after:fixed after:overflow-hidden after:z-[9] after:inset-0 after:bg-backdrop">
         <div className={cn(modalVariants({ variant, size, className }))}>
           <div className="z-[2] relative max-h-screen overflow-y-auto p-4">
             {icon && (
@@ -60,7 +60,7 @@ const modalVariants = cva("", {
   variants: {
     variant: {
       standard:
-        "fixed w-[50rem]  z-[9999] block overflow-y-auto overflow-x-hidden -translate-y-1/4 bg-soft-peach shadow-grey mt-4 mb-auto mx-auto rounded-lg top-1/4 inset-x-0",
+        "fixed w-[50rem]  z-[99] block overflow-y-auto overflow-x-hidden -translate-y-1/4 bg-soft-peach shadow-grey mt-4 mb-auto mx-auto rounded-lg top-1/4 inset-x-0",
     },
     size: {
       xs: "w-[95%] md:w-[20rem]",

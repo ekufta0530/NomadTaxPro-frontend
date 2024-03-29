@@ -6,6 +6,8 @@ interface FlexProps extends VariantProps<typeof flexVariants> {
   className?: string;
   children: ReactNode;
   onClick?: () => void;
+  onMouseOver?: () => void;
+  onMouseLeave?: () => void;
 }
 
 export function Flex({

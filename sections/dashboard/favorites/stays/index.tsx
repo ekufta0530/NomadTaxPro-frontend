@@ -13,7 +13,6 @@ import { useAuth } from "context/AuthContext";
 import { http } from "utils/http";
 import { API } from "utils/api";
 import { toast } from "react-toastify";
-import { Toastify } from "common/loaders/toastify";
 import { Loader } from "common/loaders/loader";
 import { useCountry } from "context/CountryContext";
 import { Icon } from "common/media/icon";
@@ -25,7 +24,19 @@ export function Stays({
   favoriteCountryListClickId: number | string | null;
 }) {
   const { currentUser } = useAuth();
-  const { getStays } = useCountry();
+  const {
+    getStays,
+    editId,
+    editCountryName,
+    getEditId,
+    getEditCountryStartDate,
+    getEditCountryEndDate,
+    editCountryEndDate,
+    editCountryStartDate,
+    getEditCountryName,
+    stays,
+  } = useCountry();
+
   const router = useRouter();
   const [countrySelectData, setCountrySelectData] = useState<SelectMenu[]>([]);
   const [dateFrom, setDateFrom] = useState(new Date());
@@ -37,17 +48,30 @@ export function Stays({
   >();
   const [countryName, setCountryName] = useState<string | null>(null);
 
+  // Overlapping countries
+  const [overlapCountry, setOverlapCountry] = useState({
+    id: null,
+    country: "",
+    dateTo: null,
+    dateFrom: null,
+    isOverlapped: false,
+  });
+
   useEffect(() => {
-    const countries = countryCardData?.map((country) => {
+    const filterCountries = countryCardData.filter(
+      (country) =>
+        !stays.some((stay) => stay.countryId === country.id) && country.id !== 1
+    );
+    const countries = filterCountries?.map((country) => {
       return {
         id: country.id,
         value: country.id,
         option: country.country_name,
       };
     });
-    const filterCountries = countries.filter((country) => country.id !== 1);
-    setCountryId(filterCountries[0]?.id);
-    setCountrySelectData(filterCountries);
+
+    setCountryId(countries[0]?.id);
+    setCountrySelectData(countries);
     if (favoriteCountryListClickId) {
       setSelectedCountryId(favoriteCountryListClickId);
       setCountryName(
@@ -58,7 +82,33 @@ export function Stays({
     } else {
       setSelectedCountryId(null);
     }
-  }, [favoriteCountryListClickId]);
+    if (editId) {
+      setSelectedCountryId(editId);
+      setCountryName(editCountryName);
+    }
+    if (editCountryStartDate) {
+      setDateFrom(new Date(editCountryStartDate));
+    }
+    if (editCountryEndDate) {
+      setDateTo(new Date(editCountryEndDate));
+    }
+    return () => {
+      setOverlapCountry({
+        id: null,
+        country: "",
+        dateTo: null,
+        dateFrom: null,
+        isOverlapped: false,
+      });
+    };
+  }, [
+    favoriteCountryListClickId,
+    editId,
+    editCountryName,
+    editCountryEndDate,
+    editCountryStartDate,
+    stays,
+  ]);
 
   const handleChangeCountry = (e: ChangeEvent<HTMLSelectElement>) => {
     setCountryId(e.target.value);
@@ -80,6 +130,7 @@ export function Stays({
             : Number(countryId),
         dateFrom: dateFrom,
         dateTo: dateTo,
+        edit: editId ? true : false,
       },
       {
         token: currentUser?.token,
@@ -87,14 +138,74 @@ export function Stays({
     );
     if (res.status === 201) {
       setCountryId(countrySelectData[0]?.id);
-      router.push("/dashboard/favorites");
+      router.push("/dashboard/tracker");
       setIsLoading(false);
       toast.success(data?.message);
       getStays();
+      if (getEditId) {
+        getEditId(null);
+      }
+      if (getEditCountryStartDate) {
+        getEditCountryStartDate(null);
+      }
+      if (getEditCountryEndDate) {
+        getEditCountryEndDate(null);
+      }
+      setOverlapCountry({
+        id: null,
+        country: "",
+        dateTo: null,
+        dateFrom: null,
+        isOverlapped: false,
+      });
+    } else if (res.status === 400 && data.countryId) {
+      const country =
+        countryCardData.find((country) => country.id === data.countryId)
+          ?.country_name ?? "";
+      setOverlapCountry({
+        id: data.countryId,
+        country: country,
+        dateFrom: data.dateFrom,
+        dateTo: data.dateTo,
+        isOverlapped: true,
+      });
+      setIsLoading(false);
     } else {
       setIsLoading(false);
       toast.error(data?.message);
+      router.push("/dashboard/tracker");
+      setOverlapCountry({
+        id: null,
+        country: "",
+        dateTo: null,
+        dateFrom: null,
+        isOverlapped: false,
+      });
     }
+  };
+
+  const handleModifyTrip = () => {
+    if (overlapCountry.id) {
+      if (getEditId) {
+        getEditId(overlapCountry.id);
+      }
+      if (getEditCountryName) {
+        getEditCountryName(overlapCountry.country);
+      }
+      if (getEditCountryStartDate) {
+        getEditCountryStartDate(overlapCountry.dateFrom);
+      }
+      if (getEditCountryEndDate) {
+        getEditCountryEndDate(overlapCountry.dateTo);
+      }
+    }
+    setOverlapCountry({
+      id: null,
+      country: "",
+      dateTo: null,
+      dateFrom: null,
+      isOverlapped: false,
+    });
   };
 
   return (
@@ -103,7 +214,7 @@ export function Stays({
         <div className="px-4">
           <Text
             as="p"
-            text="Add Stay"
+            text={editId ? "Edit Stay" : "Add Stay"}
             size="3xl"
             weight="bold"
             className="text-center mt-0 pt-0"
@@ -112,7 +223,7 @@ export function Stays({
             as="p"
             text={`${
               selectedCountryId
-                ? `Add Stay for ${countryName}`
+                ? `${editId ? "Edit" : "Add"} Stay for ${countryName}`
                 : "Select a country to add a stay for"
             }`}
             size="md"
@@ -122,7 +233,7 @@ export function Stays({
           />
           {selectedCountryId ? (
             <Flex variant="rowCenterCenter" className="mt-5 gap-2">
-              <Icon icon="HeartFilled" size="xs" />
+              {!editId && <Icon icon="HeartFilled" size="xs" />}
               <Text
                 as="p"
                 size="2xl"
@@ -164,9 +275,34 @@ export function Stays({
               onChange={(date: Date) => setDateTo(date)}
             />
           </Flex>
+          {overlapCountry.isOverlapped && (
+            <>
+              <Text
+                as="p"
+                text={`You already have a trip to ${
+                  overlapCountry.country
+                } starting on ${
+                  overlapCountry.dateFrom
+                    ? new Date(overlapCountry.dateFrom).toDateString()
+                    : ""
+                } and ending on ${
+                  overlapCountry.dateTo
+                    ? new Date(overlapCountry.dateTo).toDateString()
+                    : ""
+                }`}
+                className="text-red-500 font-medium"
+              />
+              <Button
+                text="Modify this trip"
+                link="/dashboard/tracker#stay-modal"
+                onClick={handleModifyTrip}
+                className="my-2"
+              />
+            </>
+          )}
           <Loader type="BarLoader" loading={isLoading} />
           <Button
-            text="Add Stay"
+            text={`${editId ? "Edit" : "Add"} Stay`}
             className="w-full mt-10"
             onClick={handleAddStay}
             disabled={isLoading || !countryId || !dateFrom || !dateTo}

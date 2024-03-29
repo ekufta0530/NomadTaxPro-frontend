@@ -30,7 +30,11 @@ export default function Page() {
     if (res.status === 200) {
       localStorage.setItem("user", JSON.stringify(data));
       getCurrentUser(data);
-      router.push("/dashboard");
+      if (data.loginAttempts > 1) {
+        router.push("/dashboard/tracker");
+      } else {
+        router.push("/dashboard");
+      }
       setIsLoading(false);
     } else {
       toast.error(data.message);

@@ -8,7 +8,7 @@ import Link from "next/link";
 
 interface IconProps extends VariantProps<typeof iconVariants> {
   icon: Icons;
-  onClick?: () => void;
+  onClick?: (e?: any) => void;
   className?: string;
   link?: string;
 }

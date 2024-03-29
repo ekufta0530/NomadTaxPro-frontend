@@ -13,7 +13,16 @@ import { Stays } from "./stays";
 import { Loader } from "common/loaders/loader";
 
 export function Favorites() {
-  const { favoriteCountryIds, isFetchedIds, stays } = useCountry();
+  const {
+    favoriteCountryIds,
+    isFetchedIds,
+    stays,
+    getEditCountryEndDate,
+    getEditCountryStartDate,
+    getEditId,
+    getEditCountryName,
+    isFetchedStay,
+  } = useCountry();
   const sidebarRef = useRef<HTMLDivElement | null>(null);
   const [matchedFavoriteCountries, setMatchedFavoriteCountries] = useState<
     any[]
@@ -88,7 +97,27 @@ export function Favorites() {
     }
   };
 
+  const handleAddStayClick = () => {
+    setFavoriteCountryListClickId(null);
+    if (getEditId) {
+      getEditId(null);
+    }
+    if (getEditCountryName) {
+      getEditCountryName("");
+    }
+    if (getEditCountryStartDate) {
+      getEditCountryStartDate(new Date());
+    }
+    if (getEditCountryEndDate) {
+      getEditCountryEndDate(new Date());
+    }
+  };
+
   const isFavorite = matchedFavoriteCountries.length > 0;
+  const isSchedule = scheduleList.length > 0;
+  const keyNotes = countryCardData.filter(
+    (country) => country.key_consideration !== null
+  );
 
   return (
     <div className="grid grid-cols-1  md:grid-cols-1 lg:grid-cols-[19rem,calc(72%-19rem),28%] gap-5 mt-10">
@@ -123,8 +152,8 @@ export function Favorites() {
 
       <div className="hidden lg:block min-h-[82vh] max-h-[82vh] overflow-y-scroll bg-white shadow-grey-xxs w-full rounded-2xl  py-4 px-2">
         <Button
-          onClick={() => setFavoriteCountryListClickId(null)}
-          link="/dashboard/favorites#stay-modal"
+          onClick={handleAddStayClick}
+          link="/dashboard/tracker#stay-modal"
           text="+ADD STAY"
           size="md"
           variant="rounded-dark-blue"
@@ -140,16 +169,20 @@ export function Favorites() {
         />
       </div>
 
-      {!isFavorite ? (
+      {!isSchedule ? (
         <Flex variant="columnStartCenter" className="gap-2">
-          {isFetchedIds ? (
+          {isFetchedStay ? (
             <>
               <Text
                 as="h1"
-                text="No Favorite Country"
+                text="No stays added"
                 className="text-center mt-2"
               />
-              <Button text="Add Favorite" link="/dashboard" className="w-40" />
+              <Button
+                text="Add One"
+                link="/dashboard/tracker#stay-modal"
+                className="w-32"
+              />
             </>
           ) : (
             <Loader type="BeatLoader" loading={true} />
@@ -159,7 +192,7 @@ export function Favorites() {
         <div className="min-h-[82vh] max-h-[82vh] overflow-y-scroll p-4">
           <Map
             type="FavoriteCountryCollapse"
-            data={matchedFavoriteCountries}
+            data={scheduleList}
             variant="columnStartCenter"
           />
         </div>
@@ -168,25 +201,24 @@ export function Favorites() {
       <div className="shadow-grey-xxs rounded-xl min-h-[82vh] max-h-[82vh] overflow-y-scroll">
         <div className="p-4 shadow-grey-xxs rounded-xl">
           <TrackingCard graphData={[remainingDays, completedDays]} />
-          {scheduleList.length > 0 && (
-            <div className="mt-10">
-              <Text
-                as="h1"
-                size="lg"
-                text="Schedules"
-                color="purple-blue"
-                weight="semiBold"
+
+          <div className="mt-10">
+            <Text
+              as="h1"
+              size="lg"
+              text="Key Notes"
+              color="purple-blue"
+              weight="semiBold"
+            />
+            <div className="max-h-[20rem] overflow-y-auto mt-2">
+              <Map
+                type="ScheduleList"
+                data={keyNotes}
+                variant="columnStartCenter"
+                className="gap-2"
               />
-              <div className="max-h-[20rem] overflow-y-auto mt-2">
-                <Map
-                  type="ScheduleList"
-                  data={scheduleList}
-                  variant="columnStartCenter"
-                  className="gap-2"
-                />
-              </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
       <Stays favoriteCountryListClickId={favoriteCountryListClickId} />

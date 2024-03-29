@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { MouseEvent } from "react";
 import { Flex } from "common/widgets/advance/flex";
 import Image from "next/image";
 import { Icon } from "common/media/icon";
@@ -12,17 +12,22 @@ import { http } from "utils/http";
 import { toast } from "react-toastify";
 import { useAuth } from "context/AuthContext";
 import { useCountry } from "context/CountryContext";
+import { useRouter } from "next/navigation";
 
 export function CountryCard({
   id,
   image,
   country_name,
   cost_of_living_single,
+  key_consideration,
+  Tagline,
 }: CountryCardProps) {
   const { currentUser } = useAuth();
   const { favoriteCountryIds, getFavoriteCountries } = useCountry();
+  const router = useRouter();
 
-  const handleFavoriteCountry = async () => {
+  const handleFavoriteCountry = async (e: MouseEvent<HTMLDetailsElement>) => {
+    e.stopPropagation();
     const alreadyFav = favoriteCountryIds.includes(id as never);
     const endpoint = alreadyFav ? "remove" : "add";
     const { res, data } = await http.post(
@@ -45,8 +50,42 @@ export function CountryCard({
     }
   };
 
+  const handleRequestInfo = async () => {
+    const { res, data } = await http.post(
+      API.country.info.request,
+      {
+        action: "Country Requested",
+        country: country_name,
+      },
+      {
+        token: currentUser?.token,
+      }
+    );
+    if (res.status === 200) {
+      toast.success(data?.message);
+    } else {
+      toast.error(data?.message);
+    }
+  };
+
+  const handleCountryUrl = () => {
+    if (Tagline) {
+      router.push(`/dashboard/country-detail/${id}`);
+    }
+  };
+
+  const isLivingCost =
+    cost_of_living_single !== null &&
+    cost_of_living_single !== undefined &&
+    cost_of_living_single > 0;
+
   return (
-    <div className="py-5 px-5 w-[21.5rem] relative shadow-grey rounded-[1.25rem]">
+    <div
+      onClick={handleCountryUrl}
+      className={`${
+        key_consideration ? "bg-white" : "bg-white opacity-60"
+      } shadow-grey py-5 px-5 w-[21.5rem] relative rounded-[1.25rem] cursor-pointer`}
+    >
       {image && (
         <Image
           src={image}
@@ -62,16 +101,9 @@ export function CountryCard({
         size="lg"
         weight="bold"
       />
-      {/* <Text
-        as="p"
-        className="text-left mt-1"
-        text={person}
-        color="cold-purple"
-        size="sm"
-        weight="regular"
-      /> */}
+
       <Flex variant="rowBetweenCenter" className="mt-5 mb-2">
-        {cost_of_living_single && (
+        {isLivingCost && (
           <Text
             as="p"
             className="text-left"
@@ -83,10 +115,13 @@ export function CountryCard({
         )}
         <Button
           variant="solid-dark-blue"
-          text="Details"
+          text={key_consideration ? "Details" : "Request Info"}
           size="md"
           className="rounded-full text-sm"
-          link={`/dashboard/country-detail/${id}`}
+          onClick={key_consideration ? undefined : handleRequestInfo}
+          link={
+            key_consideration ? `/dashboard/country-detail/${id}` : undefined
+          }
         />
       </Flex>
       <Icon
@@ -98,7 +133,9 @@ export function CountryCard({
         size="sm"
         variant="circle"
         className="border-none w-[2.25rem] h-[2.25rem] bg-white p-[.6rem] absolute top-9 right-8"
-        onClick={handleFavoriteCountry}
+        onClick={(e: MouseEvent<HTMLDetailsElement>) =>
+          handleFavoriteCountry(e)
+        }
       />
     </div>
   );

@@ -41,6 +41,7 @@ import thailand2 from "public/assets/imgs/countries/thailand_2.jpeg";
 import uruguay1 from "public/assets/imgs/countries/uruguay_1.jpeg";
 import usa from "public/assets/imgs/countries/usa.jpeg";
 import berbodas from "public/assets/imgs/countries/berbodas.jpeg";
+import imagePlaceholder from "public/assets/imgs/image-placeholder.png";
 
 export const imgs = {
   logo,
@@ -86,4 +87,5 @@ export const imgs = {
   uruguay1,
   usa,
   berbodas,
+  imagePlaceholder,
 };

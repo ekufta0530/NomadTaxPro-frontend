@@ -2,28 +2,37 @@
 
 import { Map } from "components/map";
 import { countryCardData } from "data/static/cardData";
-import { DashboardHeader } from "layout/header/dashboardHeader";
+import { DashboardHeader } from "layout/headers/dashboardHeader";
 import React from "react";
 import { Flex } from "common/widgets/advance/flex";
 import { Select } from "common/widgets/basic/select";
 import {
-  anchorSelectData,
+  anchorAuxiliarySelectData,
   maxCostSelectData,
   minCostSelectData,
   sortSelectData,
 } from "data/static/selectData";
-import { auxiliarySelectData } from "data/static/selectData";
 import { Input } from "common/widgets/basic/input";
 import { useState, ChangeEvent } from "react";
 import { Text } from "common/widgets/basic/text";
 import { Loader } from "common/loaders/loader";
+import { Icon } from "common/media/icon";
 
 export function Home() {
-  const [countries, setCountries] = useState(countryCardData);
+  const keyNotesNotNull = countryCardData.filter(
+    (country) => country.key_consideration !== null
+  );
+  const keyNotesNull = countryCardData.filter(
+    (country) => country.key_consideration === null
+  );
+  const keyNotes = [...keyNotesNotNull, ...keyNotesNull];
+
+  const [countries, setCountries] = useState(keyNotes);
   const [search, setSearch] = useState<string>("");
   const [minCost, setMinCost] = useState<number | null>(null);
   const [maxCost, setMaxCost] = useState<number | null>(null);
   const [isFiltered, setIsFiltered] = useState<boolean>(true);
+  const [hoverAnchor, setHoverAnchor] = useState<boolean>(false);
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -83,29 +92,6 @@ export function Home() {
     }, 500);
   };
 
-  const handleAnchor = (e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    const filterAnchor = countryCardData.filter(
-      (country) => country.type !== null && country.type !== undefined
-    );
-    const countries = filterAnchor.filter(
-      (country: any) => country.type === (value === "yes" ? "Anchor" : false)
-    );
-    setCountries(countries);
-  };
-  const handleAuxiliary = (e: ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value;
-    const filterAuxiliary = countryCardData.filter(
-      (country) =>
-        country.local_tax_on_foreign_income !== null &&
-        country.local_tax_on_foreign_income !== undefined
-    );
-    const countries = filterAuxiliary.filter(
-      (country) =>
-        country.local_tax_on_foreign_income === (value === "yes" ? true : false)
-    );
-    setCountries(countries);
-  };
   const handleSortBy = (e: ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;
     const filterLivingCost = countryCardData.filter(
@@ -137,6 +123,42 @@ export function Home() {
     }
   };
 
+  const handleAnchorAuxiliary = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    console.log(value);
+    if (value === "anchor") {
+      const filterAnchor = countryCardData.filter(
+        (country) => country.type !== null && country.type !== undefined
+      );
+      const countries = filterAnchor.filter(
+        (country: any) =>
+          country.type === (value === "anchor" ? "Anchor" : false)
+      );
+      setCountries(countries);
+    } else if (value === "auxiliary") {
+      const filterAuxiliary = countryCardData.filter(
+        (country) =>
+          country.local_tax_on_foreign_income !== null &&
+          country.local_tax_on_foreign_income !== undefined
+      );
+      const countries = filterAuxiliary.filter(
+        (country) =>
+          country.local_tax_on_foreign_income ===
+          (value === "auxiliary" ? true : false)
+      );
+      setCountries(countries);
+    } else {
+      setCountries(keyNotes);
+    }
+  };
+
+  const onMouseOverAnchor = () => {
+    setHoverAnchor(true);
+  };
+  const onMouseLeaveAnchor = () => {
+    setHoverAnchor(false);
+  };
+
   return (
     <div>
       <DashboardHeader />
@@ -163,15 +185,29 @@ export function Home() {
         </Flex>
         <Flex className="flex-wrap sm:flex-nowrap">
           <Select
-            data={anchorSelectData}
+            data={anchorAuxiliarySelectData}
             containerClass="w-full h-[3.5rem]"
-            onChange={handleAnchor}
+            onChange={handleAnchorAuxiliary}
           />
-          <Select
-            data={auxiliarySelectData}
-            containerClass="w-full h-[3.5rem]"
-            onChange={handleAuxiliary}
-          />
+          <Flex
+            variant="rowStartCenter"
+            className="gap-0 relative"
+            onMouseOver={onMouseOverAnchor}
+            onMouseLeave={onMouseLeaveAnchor}
+          >
+            <Text as="p" size="xs" text="Anchor?" className="mr-2" />
+            <Icon icon="Info" size="xs" />
+            {hoverAnchor && (
+              <div className="absolute top-4 left-0 sm:left-auto sm:right-1 h-full z-10">
+                <Text
+                  as="p"
+                  size="xs"
+                  text="Lorem Ipsum is simply dummy text of the printing and typesetting industry"
+                  className="text-white bg-dark-grey py-2 px-4 rounded-md"
+                />
+              </div>
+            )}
+          </Flex>
           <Select
             data={sortSelectData}
             containerClass="w-full h-[3.5rem]"

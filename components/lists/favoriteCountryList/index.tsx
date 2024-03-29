@@ -24,7 +24,14 @@ export function FavoriteCountryList({
   onFavoriteCountryListClick,
 }: FavoriteCountryListProps) {
   const { currentUser } = useAuth();
-  const { getFavoriteCountries } = useCountry();
+  const {
+    getFavoriteCountries,
+    getEditCountryName,
+    getEditId,
+    getEditCountryStartDate,
+    getEditCountryEndDate,
+    stays,
+  } = useCountry();
 
   const handleRemoveFavoriteCountry = async () => {
     const { res, data } = await http.post(
@@ -47,6 +54,37 @@ export function FavoriteCountryList({
     }
   };
 
+  const handleLinkAddStay = () => {
+    const findStay = stays.find((stay) => stay.countryId === id);
+    if (findStay) {
+      if (getEditId) {
+        getEditId(id as number);
+      }
+      if (getEditCountryName) {
+        getEditCountryName(country_name);
+      }
+      if (getEditCountryStartDate) {
+        getEditCountryStartDate(new Date(dateFrom));
+      }
+      if (getEditCountryEndDate) {
+        getEditCountryEndDate(new Date(dateTo));
+      }
+    } else {
+      if (getEditId) {
+        getEditId(null);
+      }
+      if (getEditCountryName) {
+        getEditCountryName("");
+      }
+      if (getEditCountryStartDate) {
+        getEditCountryStartDate(new Date());
+      }
+      if (getEditCountryEndDate) {
+        getEditCountryEndDate(new Date());
+      }
+    }
+  };
+
   return (
     <Flex
       onClick={() => onFavoriteCountryListClick(id as number)}
@@ -58,7 +96,7 @@ export function FavoriteCountryList({
       <Image
         src={image}
         alt="albania"
-        className="w-[5rem] h-[4.5rem] rounded-[.75rem] object-cover"
+        className="w-[5rem] h-[4rem] rounded-[.75rem] object-cover"
       />
       <div className="p-2">
         <Link
@@ -74,14 +112,29 @@ export function FavoriteCountryList({
             className="leading-tight"
           />
         </Link>
-        <Text
+        {id !== 1 && (
+          <Link
+            href="/dashboard/tracker#stay-modal"
+            onClick={handleLinkAddStay}
+          >
+            <Button
+              variant="rounded-dark-blue"
+              size="xs"
+              text={
+                stays.find((stay) => stay.countryId === id) ? "Edit" : "+Stay"
+              }
+              className="mt-2 text-[.7rem] px-3 py-[.1rem] rounded-xl w-14"
+            />
+          </Link>
+        )}
+        {/* <Text
           as="p"
           size="xs"
           text={formatDateRange(dateFrom, dateTo)}
           color="cold-purple"
           weight="regular"
           className="mt-1"
-        />
+        /> */}
       </div>
       <Icon
         icon="HeartFilled"
@@ -89,15 +142,6 @@ export function FavoriteCountryList({
         className="absolute top-3 right-4"
         onClick={handleRemoveFavoriteCountry}
       />
-      {id !== 1 && (
-        <Button
-          variant="rounded-dark-blue"
-          size="xs"
-          text="+Stay"
-          className="absolute bottom-2 right-2 text-[.7rem] px-2 py-[.1rem] rounded-xl"
-          link="/dashboard/favorites#stay-modal"
-        />
-      )}
     </Flex>
   );
 }
