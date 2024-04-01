@@ -13,6 +13,7 @@ import { Toastify } from "common/loaders/toastify";
 import { Loader } from "common/loaders/loader";
 import { useAuth } from "context/AuthContext";
 
+
 export default function Page() {
   const { getCurrentUser } = useAuth();
   const [email, setEmail] = useState<string>("");

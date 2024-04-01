@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { Loader } from "common/loaders/loader";
 import { http } from "utils/http";
 import { API } from "utils/api";
+import { validate } from "email-validator";
 
 export default function Page() {
   const [firstName, setFirstName] = useState("");
@@ -20,6 +21,10 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSignUp = async () => {
+    if (!validate(email)) {
+      toast.error("Invalid email, please enter a valid email address");
+      return;
+    }
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
     } else {
