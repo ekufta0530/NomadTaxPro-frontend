@@ -11,8 +11,6 @@ import { useAuth } from "context/AuthContext";
 import { useCountry } from "context/CountryContext";
 import Link from "next/link";
 import { Button } from "common/widgets/basic/button";
-import moment from "moment";
-import { formatDateRange } from "utils/helpers/date";
 
 export function FavoriteCountryList({
   id,
@@ -91,7 +89,7 @@ export function FavoriteCountryList({
       variant="rowStartStart"
       className={`${
         id === favoriteCountryListClickId ? "bg-light-grey" : "bg-white"
-      } rounded-[1.063rem] w-full  relative gap-2 p-2 cursor-pointer`}
+      } rounded-[1.063rem] min-w-[18rem] w-full  relative gap-2 p-2 cursor-pointer`}
     >
       <Image
         src={image}
@@ -112,29 +110,16 @@ export function FavoriteCountryList({
             className="leading-tight"
           />
         </Link>
-        {id !== 1 && (
-          <Link
-            href="/dashboard/tracker#stay-modal"
-            onClick={handleLinkAddStay}
-          >
-            <Button
-              variant="rounded-dark-blue"
-              size="xs"
-              text={
-                stays.find((stay) => stay.countryId === id) ? "Edit" : "+Stay"
-              }
-              className="mt-2 text-[.7rem] px-3 py-[.1rem] rounded-xl w-14"
-            />
-          </Link>
-        )}
-        {/* <Text
-          as="p"
-          size="xs"
-          text={formatDateRange(dateFrom, dateTo)}
-          color="cold-purple"
-          weight="regular"
-          className="mt-1"
-        /> */}
+        <Link href="/dashboard/tracker#stay-modal" onClick={handleLinkAddStay}>
+          <Button
+            variant="rounded-dark-blue"
+            size="xs"
+            text={
+              stays.find((stay) => stay.countryId === id) ? "Edit" : "+Stay"
+            }
+            className="mt-2 text-[.7rem] px-3 py-[.1rem] rounded-xl w-14"
+          />
+        </Link>
       </div>
       <Icon
         icon="HeartFilled"

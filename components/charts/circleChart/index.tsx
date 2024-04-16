@@ -11,14 +11,19 @@ export function CircleChart({ barData }: { barData: any[] }) {
   const total = barData.reduce((acc, curr) => acc + curr, 0);
   const completionPercentage = ((completed / total) * 100).toFixed(2);
 
+  const totalNumber = 330;
+
+  const percentage = (barData[1] / totalNumber) * 100;
+  const formattedPercentage = percentage.toFixed(2);
+
   const data = {
-    labels: ["Stays", "Leaves"],
+    labels: ["UnTracked", "Tracked", "United States"],
     datasets: [
       {
         label: "",
         data: barData,
-        backgroundColor: ["#E9EDF7", "#4318FF"],
-        borderColor: ["#E9EDF7", "#4318FF"],
+        backgroundColor: ["#E9EDF7", "#4318FF", "#B0BBD5"],
+        borderColor: ["#E9EDF7", "#4318FF", "#B0BBD5"],
         borderWidth: 0.1,
       },
     ],
@@ -48,7 +53,7 @@ export function CircleChart({ barData }: { barData: any[] }) {
       />
       <Flex
         variant="columnCenterCenter"
-        className="absolute top-[35%] right-[50%] translate-x-[50%] gap-0"
+        className="absolute top-[35%] right-[50%] translate-x-[50%] gap-0 z-[-1]"
       >
         <Text
           as="p"
@@ -62,7 +67,7 @@ export function CircleChart({ barData }: { barData: any[] }) {
           size="xl"
           color="nile-blue"
           className="text-center"
-          text={`${completionPercentage}%`}
+          text={`${formattedPercentage}%`}
           weight="bold"
         />
       </Flex>

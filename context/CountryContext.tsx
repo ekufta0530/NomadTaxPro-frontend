@@ -11,6 +11,7 @@ import { useAuth } from "./AuthContext";
 import { http } from "utils/http";
 import { API } from "utils/api";
 import { StayProps } from "types/context";
+import { DeleteCountryProps } from "types/collapsibles";
 
 interface CountryContextProps {
   favoriteCountryIds: [] | number[];
@@ -27,6 +28,13 @@ interface CountryContextProps {
   getEditCountryStartDate?: (date: Date | null) => void;
   getEditCountryEndDate?: (date: Date | null) => void;
   isFetchedStay?: boolean;
+  deleteCountry?: DeleteCountryProps;
+  getDeleteCountry: (
+    id: number | null,
+    name: string | null,
+    dateFrom: Date | null,
+    dateTo: Date | null,
+  ) => void;
 }
 
 const CountryContext = createContext<CountryContextProps>({
@@ -44,6 +52,13 @@ const CountryContext = createContext<CountryContextProps>({
   getEditCountryStartDate: () => {},
   getEditCountryEndDate: () => {},
   isFetchedStay: false,
+  deleteCountry: {
+    id: null,
+    name: "",
+    dateFrom: null,
+    dateTo: null,
+  },
+  getDeleteCountry: () => {},
 });
 
 export const useCountry = () => useContext(CountryContext);
@@ -62,6 +77,14 @@ export function CountryProvider({ children }: { children: ReactNode }) {
   );
   const [isFetchedStay, setIsFetchedStay] = useState<boolean>(false);
   const { currentUser } = useAuth();
+
+  // Delete country
+  const [deleteCountry, setDeleteCountry] = useState<DeleteCountryProps>({
+    id: 0,
+    name: null,
+    dateFrom: null,
+    dateTo: null,
+  });
 
   useEffect(() => {
     if (currentUser) {
@@ -125,6 +148,15 @@ export function CountryProvider({ children }: { children: ReactNode }) {
     setEditCountryEndDate(date);
   };
 
+  // Delete country
+  const getDeleteCountry = (
+    id: null | number,
+    name: string | null,
+    dateFrom: Date | null,
+    dateTo: Date | null,
+  ) => {
+    setDeleteCountry({ id, name, dateFrom, dateTo });
+  };
   const value = {
     favoriteCountryIds,
     getFavoriteCountries,
@@ -140,6 +172,8 @@ export function CountryProvider({ children }: { children: ReactNode }) {
     getEditCountryStartDate,
     getEditCountryEndDate,
     isFetchedStay,
+    getDeleteCountry,
+    deleteCountry,
   };
   return (
     <CountryContext.Provider value={value}>{children}</CountryContext.Provider>

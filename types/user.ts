@@ -5,4 +5,5 @@ export type UserProps = {
   email: string;
   profileUrl: string;
   token: string;
+  periodStartDate: Date;
 };

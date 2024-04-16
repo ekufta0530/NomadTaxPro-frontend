@@ -26,6 +26,7 @@ export function FavoriteCountryCollapse({
     getEditCountryName,
     getEditCountryEndDate,
     getEditCountryStartDate,
+    getDeleteCountry,
   } = useCountry();
 
   const handleCollapse = (id: number) => {
@@ -48,6 +49,12 @@ export function FavoriteCountryCollapse({
     }
     if (getEditCountryEndDate) {
       getEditCountryEndDate(dateTo);
+    }
+  };
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (getDeleteCountry) {
+      getDeleteCountry(id as number, country_name, dateFrom, dateTo);
     }
   };
 
@@ -76,19 +83,34 @@ export function FavoriteCountryCollapse({
                   className="mt-0 pt-0"
                 />
               </Link>
-              <Link
-                href={"/dashboard/tracker#stay-modal"}
-                onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) =>
-                  handleEditClick(e)
-                }
-              >
-                <Button
-                  variant="rounded-dark-blue"
-                  size="xs"
-                  text="Edit"
-                  className="mt-0 text-[.7rem] px-3 py-[.1rem] rounded-xl"
-                />
-              </Link>
+              <Flex className="gap-2">
+                <Link
+                  href={"/dashboard/tracker#stay-modal"}
+                  onClick={(
+                    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                  ) => handleEditClick(e)}
+                >
+                  <Button
+                    variant="rounded-dark-blue"
+                    size="xs"
+                    text="Edit"
+                    className="mt-0 text-[.7rem] px-3 py-[.1rem] rounded-xl"
+                  />
+                </Link>
+                <Link
+                  href={"/dashboard/tracker#delete-stay-modal"}
+                  onClick={(
+                    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+                  ) => handleDeleteClick(e)}
+                >
+                  <Button
+                    variant="rounded-dark-blue"
+                    size="xs"
+                    text="Delete"
+                    className="mt-0 text-[.7rem] px-3 py-[.1rem] rounded-xl"
+                  />
+                </Link>
+              </Flex>
             </Flex>
             <Text
               as="p"
@@ -106,17 +128,18 @@ export function FavoriteCountryCollapse({
         </Flex>
         {expand && (
           <>
-            <Image
+            {/* <Image
               src={image}
               alt="albania"
               className="w-full max-h-[27rem] object-cover rounded-[1.875rem] my-10"
-            />
+            /> */}
             <Text
               as="p"
               text={key_consideration}
               size="sm"
               color="black"
               weight="regular"
+              className="mt-2"
             />
           </>
         )}

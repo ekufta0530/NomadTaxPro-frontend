@@ -8,6 +8,7 @@ import { cn } from "utils/helpers/cn";
 import { useHashHook } from "utils/hooks/useHashHook";
 import { usePathname } from "next/navigation";
 import { Icons } from "types/common";
+import { useRouter } from "next/navigation";
 
 interface ModalProps extends VariantProps<typeof modalVariants> {
   className?: string;
@@ -29,6 +30,11 @@ export function Modal({
   const [open, setOpen] = useState<boolean>(false);
   const hash = useHashHook();
   const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push(pathname);
+  }, [pathname, router]);
 
   useEffect(() => {
     if (hash === name) {
@@ -45,7 +51,12 @@ export function Modal({
           <div className="z-[2] relative max-h-screen overflow-y-auto p-4">
             {icon && (
               <Flex variant="rowEndCenter">
-                <Icon icon={icon && icon} size="xs" link={pathname} />
+                <Icon
+                  icon={icon && icon}
+                  size="xs"
+                  link={pathname}
+                  onClick={() => console.log("clicked")}
+                />
               </Flex>
             )}
             <div className="mt-2 mb-4"> {children}</div>

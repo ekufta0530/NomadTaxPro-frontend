@@ -6,3 +6,10 @@ export type FavoriteCountryCollapseProps = {
   dateTo: Date;
   key_consideration: string;
 };
+
+export type DeleteCountryProps = {
+  id: number | null;
+  name: string | null;
+  dateFrom: Date | null;
+  dateTo: Date | null;
+};

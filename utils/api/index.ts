@@ -8,6 +8,9 @@ export const API = {
     profile: {
       updatePic: "/api/users/profile/url",
     },
+    periodStartDate: { 
+      update: "/api/users/period-start-date/update",
+    }
   },
   aws: {
     upload: "/api/aws/upload",
@@ -21,6 +24,7 @@ export const API = {
     stay: {
       addUpdate: "/api/country/stay/add-update",
       get: "/api/country/stay/get",
+      delete: "/api/country/stay/delete",
     },
     info: {
       request: "/api/country/request-info",

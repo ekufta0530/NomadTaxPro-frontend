@@ -11,6 +11,7 @@ import { Text } from "common/widgets/basic/text";
 import { Button } from "common/widgets/basic/button";
 import { Stays } from "./stays";
 import { Loader } from "common/loaders/loader";
+import { DeleteStay } from "sections/dashboard/favorites/deleteStay";
 
 export function Favorites() {
   const {
@@ -30,6 +31,7 @@ export function Favorites() {
   const [scheduleList, setScheduleList] = useState<any[]>([]);
   const [completedDays, setCompletedDays] = useState<number>(0);
   const [remainingDays, setRemainingDays] = useState<number>(0);
+  const [USADays, setUSADays] = useState<number>(0);
 
   useEffect(() => {
     const favoriteCountries = countryCardData?.filter((country) =>
@@ -64,13 +66,27 @@ export function Favorites() {
     const filteredCountriesList = scheduleListData?.filter(
       (item) => item !== null
     );
-    const totalDaysCompleted = stays.reduce(
+    const staysWithoutUSA = stays?.filter((stay) => stay.countryId !== 1);
+    const totalDaysCompleted = staysWithoutUSA.reduce(
       (total, stay) => total + stay.daysCompleted,
       0
     );
+    let calcUSADays = 0;
+    const totalUSADays = stays?.find(
+      (stay) => stay.countryId === 1
+    )?.daysCompleted;
+    if (totalUSADays != undefined) {
+      calcUSADays = totalUSADays;
+      setUSADays(totalUSADays);
+    } else {
+      calcUSADays = 0;
+      setUSADays(0);
+    }
     setCompletedDays(totalDaysCompleted);
     setRemainingDays(
-      330 - totalDaysCompleted < -1 ? 0 : 330 - totalDaysCompleted
+      365 - totalDaysCompleted - calcUSADays < -1
+        ? 0
+        : 365 - totalDaysCompleted - calcUSADays
     );
     setScheduleList(filteredCountriesList);
     setMatchedFavoriteCountries(matchedCountries);
@@ -98,6 +114,7 @@ export function Favorites() {
   };
 
   const handleAddStayClick = () => {
+    handleCloseSidebar();
     setFavoriteCountryListClickId(null);
     if (getEditId) {
       getEditId(null);
@@ -137,6 +154,14 @@ export function Favorites() {
         <Flex variant="rowCenterCenter" className="mt-10">
           <Flex variant="columnCenterCenter">
             <ul className="ml-4 flex-col xl:hidden  text-md  font-normal">
+              <Button
+                onClick={handleAddStayClick}
+                link="/dashboard/tracker#stay-modal"
+                text="+ADD STAY"
+                size="md"
+                variant="rounded-dark-blue"
+                className="min-w-[18rem] w-full block m-auto mb-2 bg-light-grey text-nile-blue font-bold"
+              />
               <Map
                 type="FavoriteCountryList"
                 data={matchedFavoriteCountries}
@@ -192,7 +217,10 @@ export function Favorites() {
         <div className="min-h-[82vh] max-h-[82vh] overflow-y-scroll p-4">
           <Map
             type="FavoriteCountryCollapse"
-            data={scheduleList}
+            data={scheduleList.sort(
+              (a, b) =>
+                new Date(a.dateFrom).getTime() - new Date(b.dateFrom).getTime()
+            )}
             variant="columnStartCenter"
           />
         </div>
@@ -200,7 +228,7 @@ export function Favorites() {
 
       <div className="shadow-grey-xxs rounded-xl min-h-[82vh] max-h-[82vh] overflow-y-scroll">
         <div className="p-4 shadow-grey-xxs rounded-xl">
-          <TrackingCard graphData={[remainingDays, completedDays]} />
+          <TrackingCard graphData={[remainingDays, completedDays, USADays]} />
 
           <div className="mt-10">
             <Text
@@ -222,6 +250,7 @@ export function Favorites() {
         </div>
       </div>
       <Stays favoriteCountryListClickId={favoriteCountryListClickId} />
+      <DeleteStay />
     </div>
   );
 }

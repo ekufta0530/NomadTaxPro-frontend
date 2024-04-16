@@ -59,8 +59,7 @@ export function Stays({
 
   useEffect(() => {
     const filterCountries = countryCardData.filter(
-      (country) =>
-        !stays.some((stay) => stay.countryId === country.id) && country.id !== 1
+      (country) => !stays.some((stay) => stay.countryId === country.id)
     );
     const countries = filterCountries?.map((country) => {
       return {
@@ -131,17 +130,18 @@ export function Stays({
         dateFrom: dateFrom,
         dateTo: dateTo,
         edit: editId ? true : false,
+        periodStartDate: currentUser?.periodStartDate,
       },
       {
         token: currentUser?.token,
       }
     );
     if (res.status === 201) {
+      getStays();
       setCountryId(countrySelectData[0]?.id);
       router.push("/dashboard/tracker");
       setIsLoading(false);
       toast.success(data?.message);
-      getStays();
       if (getEditId) {
         getEditId(null);
       }
