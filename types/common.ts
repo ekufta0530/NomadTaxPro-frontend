@@ -57,3 +57,11 @@ export type MenuTypes = {
   link?: string;
   menu: string;
 };
+
+export type ButtonProps = {
+  label: string;
+  onClick: () => void;
+  disabled?: boolean;
+  size?: 'small' | 'medium' | 'large';
+  variant?: 'primary' | 'secondary';
+};
